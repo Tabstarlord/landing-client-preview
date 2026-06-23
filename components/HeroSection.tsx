@@ -10,7 +10,7 @@ export default function HeroSection() {
       }}
     >
       {/* Text block */}
-      <div className="max-w-2xl mx-auto px-6 text-center pt-16 pb-20">
+      <div className="max-w-2xl mx-auto px-6 text-center pt-12 sm:pt-16 pb-16 sm:pb-20">
         {/* Sparkle / cursor icon */}
         <div className="flex justify-center mb-4">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">

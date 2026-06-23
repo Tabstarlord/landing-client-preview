@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function MobileAppSection() {
   return (
-    <section className="bg-white py-20 overflow-hidden relative">
-      {/* Wave decoration — pinned to left edge, rotated vertical */}
+    <section className="bg-white py-16 md:py-20 overflow-hidden relative">
+      {/* Wave decoration — hidden on mobile to avoid overflow issues */}
       <div
-        className="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none"
+        className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none"
         style={{
           width: 148,
           height: 1440,
@@ -23,14 +23,14 @@ export default function MobileAppSection() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* ── Left column ── */}
           <div className="relative">
 
             {/* Heading */}
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
               Grow Your{" "}<span className="text-amber-400">Brand.</span>
               <br />
               <span className="whitespace-nowrap">Connect with{" "}<span className="text-amber-400">Innovators.</span></span>
@@ -39,7 +39,7 @@ export default function MobileAppSection() {
             </h2>
 
             {/* Description */}
-            <p className="text-gray-500 text-sm leading-relaxed mb-8 w-full lg:w-[464px]">
+            <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-lg">
               Flyrinzo is more than a software it&apos;s a community built for
               forward-thinking entrepreneurs who want to expand their reach,
               learn from others, and grow their businesses together.

@@ -55,11 +55,11 @@ export default function HowItWorksSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="how" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-8 lg:px-12">
+    <section id="how" className="py-16 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* Section label */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-12 md:mb-16">
           <span className="flex items-center gap-2 text-sm text-gray-500">
             <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
               <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.2" />
@@ -69,15 +69,14 @@ export default function HowItWorksSection() {
           </span>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_1.7fr] gap-12 items-start">
+        <div className="grid lg:grid-cols-[1fr_1.7fr] gap-10 lg:gap-12 items-start">
 
-          {/* ── Left: Accordion steps ── */}
+          {/* Accordion steps */}
           <div className="flex flex-col">
             {steps.map((step, i) => {
               const isOpen = openIndex === i;
               return (
                 <div key={i} className="flex gap-5">
-                  {/* Icon + connector line */}
                   <div className="flex flex-col items-center flex-shrink-0">
                     <button
                       onClick={() => setOpenIndex(i)}
@@ -95,30 +94,21 @@ export default function HowItWorksSection() {
                     )}
                   </div>
 
-                  {/* Title + collapsible description */}
                   <div className={i < steps.length - 1 ? "pb-6 flex-1" : "flex-1"}>
                     <button
                       onClick={() => setOpenIndex(i)}
                       className="w-full text-left mt-2"
                     >
-                      <h3
-                        className={`font-semibold text-sm leading-snug transition-colors ${
-                          isOpen ? "text-gray-900" : "text-gray-400 hover:text-gray-700"
-                        }`}
-                      >
+                      <h3 className={`font-semibold text-sm leading-snug transition-colors ${
+                        isOpen ? "text-gray-900" : "text-gray-400 hover:text-gray-700"
+                      }`}>
                         {step.title}
                       </h3>
                     </button>
-
-                    {/* Animated expand */}
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        isOpen ? "max-h-40 opacity-100 mt-1.5" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <p className="text-sm text-gray-500 leading-relaxed">
-                        {step.desc}
-                      </p>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      isOpen ? "max-h-40 opacity-100 mt-1.5" : "max-h-0 opacity-0"
+                    }`}>
+                      <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -126,8 +116,8 @@ export default function HowItWorksSection() {
             })}
           </div>
 
-          {/* ── Right: signup.svg ── */}
-          <div className="flex justify-center">
+          {/* signup.svg — hidden on small screens */}
+          <div className="hidden sm:flex justify-center">
             <Image
               src="/signup.svg"
               alt="Flyrinzo sign up screen"
