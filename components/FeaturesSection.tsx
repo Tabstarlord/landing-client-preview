@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const features = [
   "AI Content Suggestions",
   "Multi-Platform Scheduling",
@@ -19,60 +21,16 @@ export default function FeaturesSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: App Screenshots */}
-          <div className="space-y-3">
-            {/* Main post card */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-yellow-400 flex items-center justify-center text-xs font-bold text-gray-900">
-                  F
-                </div>
-                <div>
-                  <div className="text-xs font-semibold text-gray-800">Flyrinzo</div>
-                  <div className="text-xs text-gray-400">2 hours ago</div>
-                </div>
-                <div className="ml-auto flex gap-1">
-                  {["IG", "TW", "FB"].map((p) => (
-                    <span key={p} className="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
-                      {p}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-yellow-50 rounded-xl h-24 flex items-center justify-center text-yellow-200 mb-3">
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
-                </svg>
-              </div>
-              <p className="text-xs text-gray-600">
-                Boost your social media presence with AI-powered content suggestions…
-              </p>
-            </div>
-
-            {/* Stats cards */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-white rounded-xl shadow border border-gray-100 p-3">
-                <div className="text-xs text-gray-400 mb-1">Total Reach</div>
-                <div className="font-bold text-gray-900 text-lg">128.4K</div>
-                <div className="text-xs text-green-500">↑ 24% this week</div>
-              </div>
-              <div className="bg-white rounded-xl shadow border border-gray-100 p-3">
-                <div className="text-xs text-gray-400 mb-1">Engagement</div>
-                <div className="font-bold text-gray-900 text-lg">8.2%</div>
-                <div className="text-xs text-green-500">↑ 5% vs last week</div>
-              </div>
-            </div>
-
-            {/* Scheduled post row */}
-            <div className="bg-white rounded-xl shadow border border-gray-100 p-3">
-              <div className="text-xs font-semibold text-gray-700 mb-2">Upcoming Posts</div>
-              {["9:00 AM — Instagram reel", "12:30 PM — Twitter thread", "6:00 PM — LinkedIn update"].map((item, i) => (
-                <div key={i} className="flex items-center gap-2 py-1">
-                  <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 flex-shrink-0" />
-                  <span className="text-xs text-gray-500">{item}</span>
-                </div>
-              ))}
-            </div>
+          {/* Left: features.svg */}
+          <div className="flex justify-center">
+            <Image
+              src="/features.svg"
+              alt="Flyrinzo features"
+              width={600}
+              height={500}
+              className="w-full h-auto"
+              priority
+            />
           </div>
 
           {/* Right: Text */}
