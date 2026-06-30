@@ -21,7 +21,7 @@ export default function BookMeetingSection() {
               className="inline-flex items-center justify-center font-bold text-sm sm:text-base px-8 sm:px-12 py-3 sm:py-4 rounded-2xl transition-all hover:scale-105 w-full sm:w-auto"
               style={{
                 backgroundColor: "#FBBF24",
-                color: "#000000",
+                color: "#FFFFFF",
                 boxShadow: "0 10px 25px -5px rgba(251, 191, 36, 0.3)"
               }}
             >
