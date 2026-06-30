@@ -1,0 +1,44 @@
+{
+  "name": "Flyrinzo AI - Social Media Growth for Small Business",
+  "short_name": "Flyrinzo",
+  "description": "AI-powered social media management for small businesses. Schedule posts, analyze performance, and grow your audience — all in one place.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FBBF24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "social"
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Privacy Policy",
+      "short_name": "Privacy",
+      "description": "View our privacy policy",
+      "url": "/privacy/",
+      "icons": [
+        {
+          "src": "/favicon-48x48.png",
+          "sizes": "48x48"
+        }
+      ]
+    }
+  ]
+}
