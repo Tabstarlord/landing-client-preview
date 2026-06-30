@@ -1,81 +1,44 @@
-const analyticsStats = [
-  { label: "Reach", value: "45.2K", up: true },
-  { label: "Likes", value: "3,821", up: true },
-  { label: "Shares", value: "942", up: false },
-];
-
-const miniChartHeights = [40, 65, 45, 80, 60, 90, 70];
+import Image from "next/image";
 
 export default function BookMeetingSection() {
   return (
-    <section className="py-16 md:py-24 bg-yellow-400">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <section className="p-4 sm:p-6 lg:p-[30px_40px] overflow-hidden bg-gray-300">
+      <div className="px-4 sm:px-6 lg:pl-10 rounded-xl mx-auto bg-[#374151]">
+        <div className="grid lg:grid-cols-2 gap-0 lg:gap-20 items-center">
 
           {/* Left: Text */}
-          <div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-              Book a Meeting to Get Free Insights
+          <div className="py-8 sm:py-10 lg:py-12.5">
+            <h2 className="text-[24px] sm:text-[28px] lg:text-[32px] font-bold leading-tight mb-4" style={{ color: "#FFFFFF" }}>
+              Book a Meeting to
+              <br />
+              <span style={{ color: "#FBBF24" }}>Get Free Insights</span>
             </h2>
-            <p className="text-gray-800 text-base lg:text-lg leading-relaxed mb-8">
-              Get a personalized walkthrough of how Flyrinzo can 10x your social media growth. Our experts
-              will analyze your current strategy and show you exactly what to improve.
+            <p className="text-[16px] w-full lg:w-125 lg:text-[18px] leading-relaxed mb-6 sm:mb-8 lg:mb-10" style={{ color: "#E2E8F0" }}>
+              Get a personalized breakdown of what's working, what's not, and how AI can unlock smarter growth for your brand.
             </p>
             <a
               href="#"
-              className="inline-flex items-center bg-gray-900 hover:bg-gray-800 text-white font-semibold px-8 py-3.5 rounded-full transition-colors"
+              className="inline-flex items-center justify-center font-bold text-sm sm:text-base px-8 sm:px-12 py-3 sm:py-4 rounded-2xl transition-all hover:scale-105 w-full sm:w-auto"
+              style={{
+                backgroundColor: "#FBBF24",
+                color: "#000000",
+                boxShadow: "0 10px 25px -5px rgba(251, 191, 36, 0.3)"
+              }}
             >
-              Book Free Meeting
+              Get started
             </a>
           </div>
 
-          {/* Right: Dashboard Card */}
-          <div className="bg-white rounded-3xl shadow-2xl p-5 sm:p-6">
-            {/* Header */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-sm text-gray-900 flex-shrink-0">
-                F
-              </div>
-              <div className="min-w-0">
-                <div className="font-semibold text-gray-900 text-sm truncate">Hello, Branom! 👋</div>
-                <div className="text-xs text-gray-400">Flyrinzo AI Assistant</div>
-              </div>
-              <div className="ml-auto flex items-center gap-1.5 flex-shrink-0">
-                <div className="w-2 h-2 rounded-full bg-green-400" />
-                <span className="text-xs text-gray-400">Online</span>
-              </div>
-            </div>
-
-            {/* Analytics panel */}
-            <div className="bg-gray-50 rounded-2xl p-4 mb-4">
-              <div className="text-xs text-gray-500 mb-3 font-medium">Analytics Overview</div>
-              <div className="grid grid-cols-3 gap-2 mb-3">
-                {analyticsStats.map((s) => (
-                  <div key={s.label} className="bg-white rounded-xl p-2 text-center shadow-sm">
-                    <div className="text-xs font-bold text-gray-900">{s.value}</div>
-                    <div className="text-xs text-gray-400">{s.label}</div>
-                    <div className={`text-xs font-semibold ${s.up ? "text-green-500" : "text-red-400"}`}>
-                      {s.up ? "↑" : "↓"}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-end gap-1 h-10">
-                {miniChartHeights.map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-yellow-400 rounded-t"
-                    style={{ height: `${h}%` }}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* AI tip */}
-            <div className="text-xs text-gray-600 bg-gray-50 rounded-xl px-3 py-2.5 flex items-start gap-2">
-              <span className="text-base leading-none flex-shrink-0">💡</span>
-              <span>Based on your data, posting Tuesday at 9AM increases reach by 34%</span>
-            </div>
+          {/* Right: Dashboard illustration */}
+          <div className="relative pb-0 lg:pt-12.5 -mx-4 sm:mx-0">
+            <Image
+              src="/book.png"
+              alt="Flyrinzo Analytics Dashboard"
+              width={900}
+              height={900}
+              className="w-full h-auto"
+              priority
+            />
           </div>
 
         </div>

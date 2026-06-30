@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 
-const navLinks = ["Features", "Privacy Policy", "Terms of Use", "Data Deletion"];
+const navLinks = [
+  { label: "Features", href: "#features" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Use", href: "/terms" },
+  { label: "Data Deletion", href: "/data-deletion" },
+];
 
 export default function Footer() {
   const [visible, setVisible] = useState(false);
@@ -32,11 +37,11 @@ export default function Footer() {
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {navLinks.map((link) => (
                 <a
-                  key={link}
-                  href="#"
+                  key={link.label}
+                  href={link.href}
                   className="text-sm text-gray-800 font-medium hover:text-gray-600 transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </div>

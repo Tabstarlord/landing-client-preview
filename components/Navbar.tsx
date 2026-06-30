@@ -31,16 +31,6 @@ export default function Navbar() {
                     ? "text-gray-900 font-medium"
                     : "text-gray-500 hover:text-gray-800"
                 }`}
-                style={
-                  item.active
-                    ? {
-                        textDecoration: "underline",
-                        textDecorationColor: "#FBBF24",
-                        textDecorationThickness: "2px",
-                        textUnderlineOffset: "4px",
-                      }
-                    : {}
-                }
               >
                 {item.label}
               </a>

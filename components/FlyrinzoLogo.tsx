@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function FlyrinzoLogo({ className = "" }: { className?: string }) {
   return (
-    <Link href="/dashboard" className={`flex items-center gap-2 ${className}`}>
+    <Link href="/" className={`flex items-center gap-2 ${className}`}>
       <Image
         src="/logo.png"
         alt="Flyrinzo"
