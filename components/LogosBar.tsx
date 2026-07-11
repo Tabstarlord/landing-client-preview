@@ -3,13 +3,13 @@
 import Image from "next/image";
 
 const logos = [
-  { name: "Air", src: "/air.png", width: 100, height: 40 },
-  { name: "Chamber", src: "/chamber.png", width: 120, height: 40 },
-  { name: "Fly", src: "/fly.png", width: 100, height: 40 },
-  { name: "Layer", src: "/layer.png", width: 100, height: 40 },
-  { name: "Loveville", src: "/Loveville.png", width: 120, height: 40 },
-  { name: "Vile", src: "/vile.png", width: 80, height: 40 },
-  { name: "Washington", src: "/washington.png", width: 140, height: 40 },
+  { name: "Air", src: "/air.webp", width: 100, height: 40 },
+  { name: "Chamber", src: "/chamber.webp", width: 120, height: 40 },
+  { name: "Fly", src: "/fly.webp", width: 100, height: 40 },
+  { name: "Layer", src: "/layer.webp", width: 100, height: 40 },
+  { name: "Loveville", src: "/Loveville.webp", width: 120, height: 40 },
+  { name: "Vile", src: "/vile.webp", width: 80, height: 40 },
+  { name: "Washington", src: "/washington.webp", width: 140, height: 40 },
 ];
 
 export default function LogosBar() {

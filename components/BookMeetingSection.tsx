@@ -32,7 +32,7 @@ export default function BookMeetingSection() {
           {/* Right: Dashboard illustration */}
           <div className="relative pb-0 lg:pt-12.5 -mx-4 sm:mx-0">
             <Image
-              src="/book.png"
+              src="/book.webp"
               alt="Flyrinzo Analytics Dashboard"
               width={900}
               height={900}
