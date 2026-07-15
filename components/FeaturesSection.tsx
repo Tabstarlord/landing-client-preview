@@ -1,4 +1,5 @@
-import DashboardCarousel from "./DashboardCarousel";
+import Image from "next/image";
+import FeatureCarouselMobile from "./FeatureCarouselMobile";
 
 const features = [
   "AI Content Suggestions",
@@ -11,7 +12,7 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-center mb-12 md:mb-16">
+        <div className="flex justify-center mb-10 md:mb-16">
           <span className="text-xs font-medium text-gray-500 border border-gray-200 rounded-full px-4 py-1.5 flex items-center gap-1.5">
             <svg className="w-3 h-3" viewBox="0 0 12 12" fill="currentColor">
               <path d="M6 0L7.5 4.5H12L8.25 7.25L9.75 12L6 9.25L2.25 12L3.75 7.25L0 4.5H4.5L6 0Z" />
@@ -20,10 +21,27 @@ export default function FeaturesSection() {
           </span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: dashboard screenshot carousel */}
+        {/* Mobile: heading + slide carousel */}
+        <div className="lg:hidden">
+          <h2 className="text-[26px] font-bold text-gray-900 leading-tight mb-10 text-center">
+            Everything you need to{" "}
+            <span className="text-amber-400">grow your business</span> right in your pocket.
+          </h2>
+          <FeatureCarouselMobile />
+        </div>
+
+        {/* Desktop: image + text + checklist */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Left: features.svg */}
           <div className="flex justify-center">
-            <DashboardCarousel />
+            <Image
+              src="/features.svg"
+              alt="Flyrinzo features"
+              width={600}
+              height={500}
+              className="w-full h-auto"
+              priority
+            />
           </div>
 
           {/* Right: Text */}

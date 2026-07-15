@@ -99,8 +99,8 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="text-xs text-gray-400">© 2025 Flyrinzo. All rights reserved.</p>
         <p className="text-xs text-gray-400">Flyrinzo is a Brainleads Group company</p>
+        <p className="text-xs text-gray-400">© 2025 Flyrinzo. All rights reserved.</p>
       </div>
     </footer>
 

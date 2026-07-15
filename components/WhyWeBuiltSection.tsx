@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MissionVisionToggle from "./MissionVisionToggle";
 
 export default function WhyWeBuiltSection() {
   return (
@@ -6,7 +7,7 @@ export default function WhyWeBuiltSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         {/* Section label */}
-        <div className="flex justify-center mb-12 md:mb-16">
+        <div className="flex justify-center mb-10 md:mb-16">
           <span className="flex items-center gap-2 text-sm text-gray-500">
             <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
               <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.2" />
@@ -16,7 +17,36 @@ export default function WhyWeBuiltSection() {
           </span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* Mobile layout */}
+        <div className="lg:hidden">
+          <Image
+            src="/why.svg"
+            alt="Why we built Flyrinzo"
+            width={649}
+            height={688}
+            className="w-full max-w-sm mx-auto h-auto mb-10"
+          />
+
+          <h2 className="text-[26px] font-bold text-gray-900 leading-tight mb-6 text-center">
+            We Built Flyrinzo for{" "}
+            <span className="text-amber-400">Entrepreneurs</span>{" "}
+            Who Refuse to Guess
+          </h2>
+
+          <p className="text-gray-500 text-base leading-relaxed mb-10 text-center">
+            Every small business starts with a dream: to grow, connect, and make an
+            impact. But too often, entrepreneurs struggle: scattered marketing tools,
+            confusing analytics, and no real global support.{" "}
+            <strong className="text-gray-900 font-semibold">
+              Effort alone doesn&apos;t always lead to results.
+            </strong>
+          </p>
+
+          <MissionVisionToggle />
+        </div>
+
+        {/* Desktop layout */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left: why.svg */}
           <div className="flex justify-center">

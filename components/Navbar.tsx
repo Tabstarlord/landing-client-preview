@@ -41,7 +41,7 @@ export default function Navbar() {
             {/* CTA */}
             <a
               href="#"
-              className="flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-full transition-colors"
+              className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold text-sm px-5 py-2.5 rounded-full transition-colors"
             >
               Get Started
             </a>
