@@ -1,4 +1,4 @@
-import Image from "next/image";
+import DashboardCarousel from "./DashboardCarousel";
 
 const features = [
   "AI Content Suggestions",
@@ -21,16 +21,9 @@ export default function FeaturesSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: features.svg */}
+          {/* Left: dashboard screenshot carousel */}
           <div className="flex justify-center">
-            <Image
-              src="/features.svg"
-              alt="Flyrinzo features"
-              width={600}
-              height={500}
-              className="w-full h-auto"
-              priority
-            />
+            <DashboardCarousel />
           </div>
 
           {/* Right: Text */}
