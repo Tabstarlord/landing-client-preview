@@ -1,6 +1,7 @@
 import HeroShowcase from "./HeroShowcase";
 import PhoneFrame from "./PhoneFrame";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -95,13 +96,16 @@ export default function HeroSection() {
 
       {/* Mobile: phone-mockup screenshot (pending asset) */}
       <div className="lg:hidden max-w-xs mx-auto px-6 pb-12">
-        <PhoneFrame>
-          <ImagePlaceholder
-            label="Mobile screenshot — Analytics app view"
-            className="w-full h-full"
-          />
-        </PhoneFrame>
+        <div className="relative">
+          <Image src={"/home.svg"} width={350} height={720} alt=""/>
+         
+        </div>
       </div>
+       <div className="absolute bottom-[-6%] left-1/2 -translate-x-1/2 w-full bg-white/95 backdrop-blur px-4 py-6 text-center">
+            <p className="text-xs text-gray-600 leading-snug">
+              Over 10,000 users have published more than 10,000 posts with Flyrinzo
+            </p>
+          </div>
 
       {/* Desktop: dashboard showcase carousel */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
