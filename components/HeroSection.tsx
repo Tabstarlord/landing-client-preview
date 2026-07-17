@@ -1,9 +1,21 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import HeroShowcase from "./HeroShowcase";
 import PhoneFrame from "./PhoneFrame";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Image from "next/image";
 
 export default function HeroSection() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+
+  function handleGetInsights() {
+    const params = email.trim() ? `?email=${encodeURIComponent(email.trim())}` : "";
+    router.push(`/contact-us${params}`);
+  }
+
   return (
     <section
       className="overflow-hidden pb-0"
@@ -54,10 +66,14 @@ export default function HeroSection() {
         <div className=" flex flex-col lg:flex-row gap-3  w-[60%]  max-w-md mx-auto">
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter Email Address"
             className="w-full h-12 w rounded-lg flex-1 border border-gray-300 px-4 text-[15px] text-gray-700 placeholder-gray-500 outline-none focus:border-amber-400"
           />
           <button
+            type="button"
+            onClick={handleGetInsights}
             className="w-full h-12 rounded-lg text-[15px] w-full px-[10px] lg:w-[192px] font-bold transition-all hover:scale-105"
             style={{
               backgroundColor: "#FBBF24",

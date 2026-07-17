@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Footer from "@/components/Footer";
 
 const TOTAL_STEPS = 4;
@@ -36,10 +37,31 @@ function ChevronDown({ className = "" }: { className?: string }) {
 }
 
 export default function ContactUs() {
+  return (
+    <Suspense fallback={null}>
+      <ContactUsForm />
+    </Suspense>
+  );
+}
+
+function ContactUsForm() {
+  const searchParams = useSearchParams();
+
   const [step, setStep] = useState(1);
 
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+
+  useEffect(() => {
+    const prefillEmail = searchParams.get("email");
+    if (prefillEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(prefillEmail)) {
+      setEmail(prefillEmail);
+      setStep(2);
+    } else if (prefillEmail) {
+      setEmail(prefillEmail);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [interests, setInterests] = useState<string[]>([]);
   const [interestError, setInterestError] = useState("");
