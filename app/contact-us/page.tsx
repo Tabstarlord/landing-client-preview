@@ -4,6 +4,9 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Footer from "@/components/Footer";
 
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "https://flyrinzo-api-server-1.onrender.com/api";
+
 const TOTAL_STEPS = 4;
 
 const STEP_TITLES: Record<number, string> = {
@@ -73,6 +76,8 @@ function ContactUsForm() {
   const [phone, setPhone] = useState("");
   const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [detailErrors, setDetailErrors] = useState<Record<string, boolean>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const selectedCountry = COUNTRIES.find((c) => c.code === countryCode) ?? COUNTRIES[0];
 
@@ -100,7 +105,7 @@ function ContactUsForm() {
     setStep(3);
   }
 
-  function handleStep3Next() {
+  async function handleStep3Next() {
     const errors: Record<string, boolean> = {};
     if (!firstName.trim()) errors.firstName = true;
     if (!lastName.trim()) errors.lastName = true;
@@ -108,7 +113,31 @@ function ContactUsForm() {
     if (!phone.trim()) errors.phone = true;
     setDetailErrors(errors);
     if (Object.keys(errors).length > 0) return;
-    setStep(4);
+
+    setSubmitError("");
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          interests,
+          firstName,
+          lastName,
+          companyName,
+          countryCode,
+          phone,
+          marketingOptIn,
+        }),
+      });
+      if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
+      setStep(4);
+    } catch {
+      setSubmitError("Something went wrong submitting your details. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -338,6 +367,7 @@ function ContactUsForm() {
                     <p className="mt-4 text-sm" style={{ color: "#6F6C90" }}>
                       <span className="text-red-500">*</span> Indicates a required field
                     </p>
+                    {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
 
                     <hr className="mt-6 border-gray-200" />
                     <div className="mt-6 flex items-center justify-between">
@@ -351,9 +381,10 @@ function ContactUsForm() {
                       <button
                         type="button"
                         onClick={handleStep3Next}
-                        className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
+                        disabled={isSubmitting}
+                        className="bg-yellow-400 hover:bg-yellow-500 disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
                       >
-                        Next
+                        {isSubmitting ? "Submitting..." : "Next"}
                       </button>
                     </div>
                   </>
