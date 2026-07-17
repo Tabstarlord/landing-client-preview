@@ -13,7 +13,7 @@ export default function HeroSection() {
       }}
     >
       {/* Text block */}
-      <div className="max-w-5xl mx-auto px-6 text-center pt-12 sm:pt-20 lg:pt-24 pb-10 sm:pb-16 lg:pb-20">
+      <div className="max-w-5xl mx-auto flex flex-col items-center px-6 text-center pt-12 sm:pt-20 lg:pt-24 pb-10 sm:pb-16 lg:pb-20">
         {/* Sparkle icon */}
         <div className="flex justify-center mb-2">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="text-amber-400">
@@ -51,14 +51,14 @@ export default function HeroSection() {
         </p>
 
         {/* Mobile: email capture */}
-        <div className="sm:hidden flex flex-col gap-3 max-w-md mx-auto">
+        <div className=" flex flex-col lg:flex-row gap-3  w-[60%]  max-w-md mx-auto">
           <input
             type="email"
             placeholder="Enter Email Address"
-            className="w-full h-12 rounded-lg border border-gray-300 px-4 text-[15px] text-gray-700 placeholder-gray-500 outline-none focus:border-amber-400"
+            className="w-full h-12 w rounded-lg flex-1 border border-gray-300 px-4 text-[15px] text-gray-700 placeholder-gray-500 outline-none focus:border-amber-400"
           />
           <button
-            className="w-full h-12 rounded-lg text-[15px] font-bold transition-all hover:scale-105"
+            className="w-full h-12 rounded-lg text-[15px] w-full px-[10px] lg:w-[192px] font-bold transition-all hover:scale-105"
             style={{
               backgroundColor: "#FBBF24",
               color: "#FFFFFF",
@@ -70,7 +70,7 @@ export default function HeroSection() {
         </div>
 
         {/* sm+: Login / Get Started buttons */}
-        <div className="hidden sm:flex items-center justify-center gap-4">
+        {/* <div className="hidden sm:flex items-center border justify-center gap-4">
           <button
             className="px-10 lg:px-12 h-13 lg:h-14 rounded-lg border-2 text-base font-semibold transition-all hover:scale-105 hover:shadow-lg"
             style={{
@@ -91,7 +91,7 @@ export default function HeroSection() {
           >
             Get Started
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile: phone-mockup screenshot (pending asset) */}
