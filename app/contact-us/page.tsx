@@ -23,13 +23,47 @@ const INTEREST_OPTIONS = [
   "Not Sure",
 ];
 
-const COUNTRIES = [
+type CountryOption = { name: string; code: string; flag: string; dial: string };
+
+const FALLBACK_COUNTRIES: CountryOption[] = [
   { name: "Canada", code: "CA", flag: "🇨🇦", dial: "+1" },
   { name: "United States", code: "US", flag: "🇺🇸", dial: "+1" },
   { name: "United Kingdom", code: "GB", flag: "🇬🇧", dial: "+44" },
   { name: "Nigeria", code: "NG", flag: "🇳🇬", dial: "+234" },
   { name: "Australia", code: "AU", flag: "🇦🇺", dial: "+61" },
 ];
+
+type ApiCountry = {
+  name: string;
+  iso2: string;
+  emoji: string;
+  phoneCode: string;
+};
+
+async function fetchAllCountries(): Promise<CountryOption[]> {
+  const perPage = 100;
+  let page = 1;
+  let pages = 1;
+  const countries: CountryOption[] = [];
+
+  do {
+    const res = await fetch(`${API_BASE_URL}/location/countries?page=${page}&perPage=${perPage}`);
+    if (!res.ok) throw new Error(`Failed to load countries (${res.status})`);
+    const json: { data: { result: ApiCountry[]; metadata: { pages: number } } } = await res.json();
+    countries.push(
+      ...json.data.result.map((c) => ({
+        name: c.name,
+        code: c.iso2,
+        flag: c.emoji,
+        dial: c.phoneCode ? `+${c.phoneCode.split("-")[0]}` : "",
+      })),
+    );
+    pages = json.data.metadata.pages;
+    page += 1;
+  } while (page <= pages);
+
+  return countries;
+}
 
 function ChevronDown({ className = "" }: { className?: string }) {
   return (
@@ -79,7 +113,23 @@ function ContactUsForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const selectedCountry = COUNTRIES.find((c) => c.code === countryCode) ?? COUNTRIES[0];
+  const [countries, setCountries] = useState<CountryOption[]>(FALLBACK_COUNTRIES);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchAllCountries()
+      .then((list) => {
+        if (!cancelled && list.length > 0) setCountries(list);
+      })
+      .catch(() => {
+        // keep the fallback list if the API is unreachable
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const selectedCountry = countries.find((c) => c.code === countryCode) ?? countries[0];
 
   function toggleInterest(option: string) {
     setInterests((prev) =>
@@ -320,7 +370,7 @@ function ContactUsForm() {
                           onChange={(e) => setCountryCode(e.target.value)}
                           className="w-full appearance-none border border-gray-300 rounded-lg pl-16 pr-4 py-3 text-sm text-gray-700 focus:outline-none focus:border-gray-500 bg-white"
                         >
-                          {COUNTRIES.map((c) => (
+                          {countries.map((c) => (
                             <option key={c.code} value={c.code}>
                               {c.name}
                             </option>
