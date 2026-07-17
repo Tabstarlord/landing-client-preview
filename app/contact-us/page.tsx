@@ -13,8 +13,10 @@ const STEP_TITLES: Record<number, string> = {
   1: "Get Your Free Insights",
   2: "Get Your Free Insights",
   3: "Enter your contact details",
-  4: "You're all set!",
+  4: "Tell us more about you",
 };
+
+const AVATAR_COLORS = ["#F87171", "#1F2937", "#A78BFA", "#FBBF24", "#F472B6"];
 
 const INTEREST_OPTIONS = [
   "Content Direction (What to Post)",
@@ -110,8 +112,11 @@ function ContactUsForm() {
   const [phone, setPhone] = useState("");
   const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [detailErrors, setDetailErrors] = useState<Record<string, boolean>>({});
+  const [additionalInfo, setAdditionalInfo] = useState("");
+  const [additionalInfoError, setAdditionalInfoError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const [countries, setCountries] = useState<CountryOption[]>(FALLBACK_COUNTRIES);
 
@@ -155,7 +160,7 @@ function ContactUsForm() {
     setStep(3);
   }
 
-  async function handleStep3Next() {
+  function handleStep3Next() {
     const errors: Record<string, boolean> = {};
     if (!firstName.trim()) errors.firstName = true;
     if (!lastName.trim()) errors.lastName = true;
@@ -163,6 +168,15 @@ function ContactUsForm() {
     if (!phone.trim()) errors.phone = true;
     setDetailErrors(errors);
     if (Object.keys(errors).length > 0) return;
+    setStep(4);
+  }
+
+  async function handleStep4Submit() {
+    if (!additionalInfo.trim()) {
+      setAdditionalInfoError(true);
+      return;
+    }
+    setAdditionalInfoError(false);
 
     setSubmitError("");
     setIsSubmitting(true);
@@ -179,10 +193,11 @@ function ContactUsForm() {
           countryCode,
           phone,
           marketingOptIn,
+          additionalInfo,
         }),
       });
       if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
-      setStep(4);
+      setShowSuccessModal(true);
     } catch {
       setSubmitError("Something went wrong submitting your details. Please try again.");
     } finally {
@@ -192,6 +207,7 @@ function ContactUsForm() {
 
   return (
     <>
+      <div className={showSuccessModal ? "blur-sm" : undefined}>
       <main className="bg-[#374151]">
         <section className="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
@@ -417,7 +433,6 @@ function ContactUsForm() {
                     <p className="mt-4 text-sm" style={{ color: "#6F6C90" }}>
                       <span className="text-red-500">*</span> Indicates a required field
                     </p>
-                    {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
 
                     <hr className="mt-6 border-gray-200" />
                     <div className="mt-6 flex items-center justify-between">
@@ -431,10 +446,9 @@ function ContactUsForm() {
                       <button
                         type="button"
                         onClick={handleStep3Next}
-                        disabled={isSubmitting}
-                        className="bg-yellow-400 hover:bg-yellow-500 disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
+                        className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
                       >
-                        {isSubmitting ? "Submitting..." : "Next"}
+                        Next
                       </button>
                     </div>
                   </>
@@ -442,45 +456,113 @@ function ContactUsForm() {
 
                 {/* Step 4 */}
                 {step === 4 && (
-                  <div className="mt-8 flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: "#FBBF24" }}>
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 13l4 4L19 7" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                  <>
+                    <div className="mt-6">
+                      <label htmlFor="additionalInfo" className="block text-sm font-medium text-black mb-2">
+                        Please provide additional information you&apos;d like us to know before the meeting.{" "}
+                        <span className="text-red-500">*</span>
+                      </label>
+                      <textarea
+                        id="additionalInfo"
+                        value={additionalInfo}
+                        onChange={(e) => {
+                          setAdditionalInfo(e.target.value);
+                          if (additionalInfoError) setAdditionalInfoError(false);
+                        }}
+                        rows={6}
+                        className={`w-full resize-none border rounded-lg px-4 py-3 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-gray-500 ${
+                          additionalInfoError ? "border-red-400" : "border-gray-300"
+                        }`}
+                      />
                     </div>
-                    <p className="mt-5 text-sm leading-relaxed max-w-sm" style={{ color: "#6F6C90" }}>
-                      Thanks for reaching out! We&apos;ve received your details and our team will follow up with your
-                      personalized AI insights within 1 business day.
+
+                    <p className="mt-4 text-sm" style={{ color: "#6F6C90" }}>
+                      <span className="text-red-500">*</span> Indicates a required field
                     </p>
-                    <a
-                      href="/"
-                      className="mt-6 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
+                    {submitError && <p className="mt-2 text-xs text-red-500">{submitError}</p>}
+
+                    <hr className="mt-6 border-gray-200" />
+                    <button
+                      type="button"
+                      onClick={handleStep4Submit}
+                      disabled={isSubmitting}
+                      className="mt-6 w-full bg-yellow-400 hover:bg-yellow-500 disabled:opacity-60 disabled:cursor-not-allowed text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
                     >
-                      Back to Homepage
-                    </a>
-                  </div>
+                      {isSubmitting ? "Submitting..." : "Submit"}
+                    </button>
+                  </>
                 )}
 
                 {/* Fine print */}
-                {step < 4 && (
-                  <p className="mt-6 text-xs leading-relaxed" style={{ color: "#6F6C90" }}>
-                    By submitting this form you agree to Flyrinzo&apos;s{" "}
-                    <a href="/terms" className="hover:underline">
-                      terms of use
-                    </a>{" "}
-                    and user{" "}
-                    <a href="/privacy" className="hover:underline">
-                      privacy Policy
-                    </a>
-                    .
-                  </p>
-                )}
+                <p className="mt-6 text-xs leading-relaxed" style={{ color: "#6F6C90" }}>
+                  By submitting this form you agree to Flyrinzo&apos;s{" "}
+                  <a href="/terms" className="hover:underline">
+                    terms of use
+                  </a>{" "}
+                  and user{" "}
+                  <a href="/privacy" className="hover:underline">
+                    privacy Policy
+                  </a>
+                  .
+                </p>
               </div>
             </div>
           </div>
         </section>
       </main>
       <Footer />
+      </div>
+
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+          <div className="relative w-full max-w-lg rounded-2xl bg-white p-10 text-center shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setShowSuccessModal(false)}
+              aria-label="Close"
+              className="absolute top-5 right-5 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-100"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+
+            <div
+              className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl"
+              style={{ backgroundColor: "#FEF3C7" }}
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-full" style={{ backgroundColor: "#FBBF24" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </div>
+
+            <h3 className="mt-6 text-3xl font-bold leading-tight text-black">
+              You&apos;re In! Your <span style={{ color: "#FBBF24" }}>Smart Marketing</span> Journey Starts Now.
+            </h3>
+
+            <p className="mt-4 text-sm leading-relaxed" style={{ color: "#6F6C90" }}>
+              We&apos;re preparing your first Flyrinzo insights. You&apos;ll receive an email shortly with your next
+              steps.
+            </p>
+
+            <div className="mt-6 flex justify-center -space-x-3">
+              {AVATAR_COLORS.map((color, i) => (
+                <div key={i} className="h-10 w-10 rounded-full border-2 border-white" style={{ backgroundColor: color }} />
+              ))}
+            </div>
+
+            <p className="mt-4 text-sm" style={{ color: "#6F6C90" }}>
+              You&apos;re not alone{" "}
+              <span className="font-semibold" style={{ color: "#FBBF24" }}>
+                9,000+ entrepreneurs
+              </span>{" "}
+              are growing with Flyrinzo.
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }

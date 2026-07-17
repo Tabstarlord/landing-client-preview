@@ -114,7 +114,6 @@ export default function HeroSection() {
       <div className="lg:hidden max-w-xs mx-auto px-6 pb-12">
         <div className="relative">
           <Image src={"/home.svg"} width={350} height={720} alt=""/>
-         
         </div>
       </div>
        <div className="absolute bottom-[-6%] left-1/2 -translate-x-1/2 w-full bg-white/95 backdrop-blur px-4 py-6 text-center lg:hidden">
