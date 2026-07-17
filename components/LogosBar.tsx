@@ -16,7 +16,7 @@ export default function LogosBar() {
   return (
     <section className="bg-gray-50 border-y border-gray-100 py-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <p className="text-center text-sm text-gray-500 mb-8">
+        <p className="hidden lg:block text-center text-sm text-gray-500 mb-8">
           Over 10,000 users have published more than 10,000 posts with Flyrinzo
         </p>
 
