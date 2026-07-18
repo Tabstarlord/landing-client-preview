@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Footer from "@/components/Footer";
 
 const API_BASE_URL =
@@ -84,6 +84,7 @@ export default function ContactUs() {
 }
 
 function ContactUsForm() {
+  const router = useRouter();
   const searchParams = useSearchParams();
 
   const [step, setStep] = useState(1);
@@ -518,7 +519,10 @@ function ContactUsForm() {
           <div className="relative w-full max-w-lg rounded-2xl bg-white p-10 text-center shadow-2xl">
             <button
               type="button"
-              onClick={() => setShowSuccessModal(false)}
+              onClick={() => {
+                setShowSuccessModal(false);
+                router.push("/");
+              }}
               aria-label="Close"
               className="absolute top-5 right-5 flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-100"
             >
