@@ -12,6 +12,7 @@ export default function StructuredData() {
       addressLocality: "Toronto",
       addressCountry: "Canada"
     },
+    areaServed: "CA",
     contactPoint: {
       "@type": "ContactPoint",
       email: "support@flyrinzo.com",
@@ -34,7 +35,7 @@ export default function StructuredData() {
     offers: {
       "@type": "Offer",
       price: "0",
-      priceCurrency: "USD"
+      priceCurrency: "CAD"
     },
     aggregateRating: {
       "@type": "AggregateRating",
@@ -42,7 +43,7 @@ export default function StructuredData() {
       ratingCount: "10000"
     },
     description:
-      "AI-powered social media management for small businesses. Schedule posts, analyze performance, and grow your audience — all in one place."
+      "Flyrinzo is an all-in-one Canadian AI marketing platform that combines social media scheduling, AI content creation, ready-to-use templates, analytics, and a business community to help small businesses grow."
   };
 
   const websiteSchema = {

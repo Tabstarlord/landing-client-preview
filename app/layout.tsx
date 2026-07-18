@@ -10,14 +10,20 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Flyrinzo AI — Social Media Growth for Small Business",
-    template: "%s | Flyrinzo AI"
+    default: "Flyrinzo | Canadian AI Marketing Platform for Small Business Growth",
+    template: "%s | Flyrinzo"
   },
   description:
-    "AI-powered social media management for small businesses. Schedule posts, analyze performance, and grow your audience — all in one place.",
+    "Flyrinzo is an all-in-one Canadian AI marketing platform that combines social media scheduling, AI content creation, ready-to-use templates, analytics, and a business community to help small businesses grow.",
   keywords: [
+    "Canadian AI marketing platform",
+    "small business growth",
     "social media management",
     "AI marketing",
+    "AI content creation",
+    "social media scheduling",
+    "ready-to-use templates",
+    "business community",
     "small business tools",
     "social media analytics",
     "content scheduling",
@@ -49,9 +55,9 @@ export const metadata: Metadata = {
     ]
   },
   openGraph: {
-    title: "Flyrinzo AI — Social Media Growth for Small Business",
+    title: "Flyrinzo | Canadian AI Marketing Platform for Small Business Growth",
     description:
-      "AI-powered social media management for small businesses. Schedule posts, analyze performance, and grow your audience — all in one place.",
+      "Flyrinzo is an all-in-one Canadian AI marketing platform that combines social media scheduling, AI content creation, ready-to-use templates, analytics, and a business community to help small businesses grow.",
     url: "https://www.flyrinzo.com",
     siteName: "Flyrinzo",
     images: [
@@ -59,17 +65,17 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Flyrinzo - AI-Powered Social Media Management"
+        alt: "Flyrinzo - Canadian AI Marketing Platform"
       }
     ],
-    locale: "en_US",
+    locale: "en_CA",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flyrinzo AI — Social Media Growth for Small Business",
+    title: "Flyrinzo | Canadian AI Marketing Platform for Small Business Growth",
     description:
-      "AI-powered social media management for small businesses. Schedule posts, analyze performance, and grow your audience — all in one place.",
+      "Flyrinzo is an all-in-one Canadian AI marketing platform that combines social media scheduling, AI content creation, ready-to-use templates, analytics, and a business community to help small businesses grow.",
     images: ["/twitter-image.png"],
     creator: "@flyrinzo"
   },

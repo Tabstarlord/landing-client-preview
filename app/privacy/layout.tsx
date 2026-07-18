@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Flyrinzo privacy"
   ],
   openGraph: {
-    title: "Privacy Policy | Flyrinzo AI",
+    title: "Privacy Policy | Flyrinzo",
     description: "Our commitment to protecting your privacy",
     url: "https://www.flyrinzo.com/privacy",
     type: "website"

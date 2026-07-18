@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Flyrinzo data removal"
   ],
   openGraph: {
-    title: "Data Deletion Policy | Flyrinzo AI",
+    title: "Data Deletion Policy | Flyrinzo",
     description: "Full control over your personal data",
     url: "https://www.flyrinzo.com/data-deletion",
     type: "website"

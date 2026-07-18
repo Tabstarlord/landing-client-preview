@@ -10,12 +10,17 @@ import BookMeetingSection from "@/components/BookMeetingSection";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Flyrinzo AI — Social Media Growth for Small Business",
+  title: "Flyrinzo | Canadian AI Marketing Platform for Small Business Growth",
   description:
-    "Turn insights into action. AI-powered social media management platform for small businesses. Schedule posts, analyze performance, and grow your audience with Flyrinzo AI.",
+    "Flyrinzo is an all-in-one Canadian AI marketing platform that combines social media scheduling, AI content creation, ready-to-use templates, analytics, and a business community to help small businesses grow.",
   keywords: [
+    "Canadian AI marketing platform",
+    "small business growth",
     "social media management",
     "AI social media tools",
+    "AI content creation",
+    "ready-to-use templates",
+    "business community",
     "small business marketing",
     "Instagram scheduler",
     "Facebook automation",
@@ -24,8 +29,9 @@ export const metadata: Metadata = {
     "business growth tools"
   ],
   openGraph: {
-    title: "Flyrinzo AI — Social Media Growth for Small Business",
-    description: "Turn insights into action. Connect. Post. Grow.",
+    title: "Flyrinzo | Canadian AI Marketing Platform for Small Business Growth",
+    description:
+      "Flyrinzo is an all-in-one Canadian AI marketing platform that combines social media scheduling, AI content creation, ready-to-use templates, analytics, and a business community to help small businesses grow.",
     url: "https://www.flyrinzo.com",
     type: "website"
   }

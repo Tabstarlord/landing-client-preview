@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "legal agreement"
   ],
   openGraph: {
-    title: "Terms of Use | Flyrinzo AI",
+    title: "Terms of Use | Flyrinzo",
     description: "Your rights and responsibilities as a Flyrinzo user",
     url: "https://www.flyrinzo.com/terms",
     type: "website"
