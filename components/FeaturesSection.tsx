@@ -1,5 +1,6 @@
-import Image from "next/image";
+import FeatureCarousel from "./FeatureCarousel";
 import FeatureCarouselMobile from "./FeatureCarouselMobile";
+import { webFeatureSlides } from "./featureSlides";
 
 const features = [
   "AI Content Suggestions",
@@ -32,15 +33,13 @@ export default function FeaturesSection() {
 
         {/* Desktop: image + text + checklist */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: features.svg */}
+          {/* Left: feature carousel */}
           <div className="flex justify-center">
-            <Image
-              src="/features.svg"
-              alt="Flyrinzo features"
-              width={600}
-              height={500}
-              className="w-full h-auto"
-              priority
+            <FeatureCarousel
+              slides={webFeatureSlides}
+              aspectRatio="2876 / 2368"
+              sizes="(min-width: 1024px) 600px, 100vw"
+              className="w-full max-w-[600px]"
             />
           </div>
 
