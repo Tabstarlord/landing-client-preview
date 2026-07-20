@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 const API_BASE_URL =
@@ -15,8 +16,6 @@ const STEP_TITLES: Record<number, string> = {
   3: "Enter your contact details",
   4: "Tell us more about you",
 };
-
-const AVATAR_COLORS = ["#F87171", "#1F2937", "#A78BFA", "#FBBF24", "#F472B6"];
 
 const INTEREST_OPTIONS = [
   "Content Direction (What to Post)",
@@ -312,7 +311,7 @@ function ContactUsForm() {
                       <button
                         type="button"
                         onClick={handleStep2Next}
-                        className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
+                        className="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg text-sm transition-colors"
                       >
                         Next
                       </button>
@@ -551,10 +550,14 @@ function ContactUsForm() {
               steps.
             </p>
 
-            <div className="mt-6 flex justify-center -space-x-3">
-              {AVATAR_COLORS.map((color, i) => (
-                <div key={i} className="h-10 w-10 rounded-full border-2 border-white" style={{ backgroundColor: color }} />
-              ))}
+            <div className="mt-6 flex justify-center">
+              <Image
+                src="/avatar-cluster.webp"
+                alt="Entrepreneurs growing with Flyrinzo"
+                width={210}
+                height={56}
+                className="h-11 w-auto"
+              />
             </div>
 
             <p className="mt-4 text-sm" style={{ color: "#6F6C90" }}>
