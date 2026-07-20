@@ -10,7 +10,7 @@ const steps = [
     body: "Create your account and set up your business profile in less than a minute. No credit card required. No commitment. Just instant access to smarter marketing tools built for small businesses.",
     bullets: [] as string[],
     outro: "",
-    screenshot: { src: "/howitworks-1.png", width: 384, height: 253 },
+    screenshot: { src: "/Sign up.webp", width: 3152, height: 2228 },
     icon: (
       <Image src="/account.svg" alt="" width={30} height={30} className="w-5 h-5 object-contain" />
     ),
@@ -21,7 +21,7 @@ const steps = [
     body: "",
     bullets: ["Syncs profile data", "Detects brand visuals", "Prepares content formats per platform"],
     outro: "No switching apps. No multiple logins every day.",
-    screenshot: { src: "/howitworks-2.png", width: 389, height: 250 },
+    screenshot: { src: "/Sign up (1).webp", width: 3152, height: 2228 },
     icon: (
       <Image src="/connect.svg" alt="" width={27} height={19} className="w-5 h-auto object-contain" />
     ),
@@ -32,7 +32,7 @@ const steps = [
     body: "",
     bullets: ["AI optimization tips", "Smart notifications", "Access to the Flyrinzo community"],
     outro: "You don't just post. You improve. You adapt. You grow.",
-    screenshot: { src: "/howitworks-3.png", width: 384, height: 276 },
+    screenshot: { src: "/Sign up (3).webp", width: 3152, height: 2352 },
     icon: (
       <Image src="/schedule.svg" alt="" width={23} height={23} className="w-5 h-5 object-contain" />
     ),
@@ -43,7 +43,7 @@ const steps = [
     body: "",
     bullets: ["Content recommendations", "Caption ideas", "Visual suggestions", "Ready-to-use templates"],
     outro: "",
-    screenshot: { src: "/howitworks-4.png", width: 389, height: 250 },
+    screenshot: { src: "/Sign up (2).webp", width: 3152, height: 2352 },
     icon: (
       <Image src="/ai.svg" alt="" width={32} height={32} className="w-5 h-5 object-contain" />
     ),
@@ -54,7 +54,7 @@ const steps = [
     body: "Connect with entrepreneurs worldwide. Learn from real success stories, avoid costly mistakes, and build partnerships that help your business grow beyond your local market.",
     bullets: [] as string[],
     outro: "",
-    screenshot: { src: "/howitworks-5.png", width: 389, height: 264 },
+    screenshot: { src: "/Sign up (4).webp", width: 3484, height: 2228 },
     icon: (
       <Image src="/rgow.svg" alt="" width={24} height={26} className="w-5 h-auto object-contain" />
     ),
@@ -183,16 +183,21 @@ export default function HowItWorksSection() {
             })}
           </div>
 
-          {/* signup.svg — shared illustration */}
-          <div className="flex justify-center">
-            <Image
-              src="/signup.svg"
-              alt="Flyrinzo sign up screen"
-              width={813}
-              height={630}
-              className="w-full h-auto"
-              priority
-            />
+          {/* Step screenshot — crossfades with the selected step */}
+          <div className="relative w-full aspect-[3152/2352]">
+            {steps.map((step, i) => (
+              <Image
+                key={step.title}
+                src={step.screenshot.src}
+                alt={step.title}
+                fill
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className={`object-contain transition-opacity duration-300 ease-in-out ${
+                  openIndex === i ? "opacity-100" : "opacity-0"
+                }`}
+                priority={i === 0}
+              />
+            ))}
           </div>
 
         </div>

@@ -20,10 +20,10 @@ export default function WhyWeBuiltSection() {
         {/* Mobile layout */}
         <div className="lg:hidden">
           <Image
-            src="/why.svg"
+            src="/why-we-built.webp"
             alt="Why we built Flyrinzo"
-            width={649}
-            height={688}
+            width={2596}
+            height={2752}
             className="w-full max-w-sm mx-auto h-auto mb-10"
           />
 
@@ -51,10 +51,10 @@ export default function WhyWeBuiltSection() {
           {/* Left: why.svg */}
           <div className="flex justify-center">
             <Image
-              src="/why.svg"
+              src="/why-we-built.webp"
               alt="Why we built Flyrinzo"
-              width={649}
-              height={688}
+              width={2596}
+              height={2752}
               className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto"
             />
           </div>
