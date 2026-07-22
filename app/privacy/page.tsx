@@ -215,32 +215,6 @@ export default function PrivacyPolicy() {
             </div>
           </div>
         </section>
-
-        {/* Newsletter Section */}
-        <section className="bg-gray-50 py-12 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center justify-between gap-8 flex-wrap">
-              <div className="flex-1 min-w-[250px]">
-                <h3 className="text-xl font-bold mb-2">Stay up to date</h3>
-                <p className="text-gray-600 text-sm">
-                  We're not just building tools; we're creating a smarter way for small businesses to grow,
-                  connect, and succeed. Join us, and let's create the future together.
-                </p>
-              </div>
-
-              <div className="flex gap-2 flex-1 min-w-[250px]">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                />
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded-md transition-colors">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
