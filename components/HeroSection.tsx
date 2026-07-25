@@ -96,7 +96,7 @@ export default function HeroSection() {
         </div>
         <div className="absolute bottom-0  left-1/2 -translate-x-1/2 min-w-full w-full bg-white/95 backdrop-blur px-4 py-6 text-center">
             <p className="text-xs text-gray-600 leading-snug">
-              Over 10,000 users have published more than 10,000 posts with Flyrinzo
+              One platform. Smarter marketing. Better Results.
             </p>
           </div>
       </div>
