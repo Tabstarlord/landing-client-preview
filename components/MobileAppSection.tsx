@@ -54,6 +54,7 @@ export default function MobileAppSection() {
             />
           </div>
 
+          {/* Store badges — temporarily hidden
           <p className="text-xs text-gray-500 font-medium mb-4">Coming soon to:</p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
@@ -81,6 +82,7 @@ export default function MobileAppSection() {
               </div>
             </a>
           </div>
+          */}
         </div>
 
         {/* Desktop layout: text + badges left, phones right */}
@@ -106,10 +108,9 @@ export default function MobileAppSection() {
               while growing together.
             </p>
 
-            {/* Store badges */}
+            {/* Store badges — temporarily hidden
             <p className="text-xs text-gray-500 font-medium mb-4">Coming soon to:</p>
             <div className="flex items-center gap-3 flex-wrap">
-              {/* Google Play */}
               <a
                 href="#"
                 className="flex items-center gap-2.5 bg-gray-900 hover:bg-gray-800 text-white rounded-xl px-4 py-2.5 transition-colors"
@@ -123,7 +124,6 @@ export default function MobileAppSection() {
                 </div>
               </a>
 
-              {/* App Store */}
               <a
                 href="#"
                 className="flex items-center gap-2.5 bg-gray-900 hover:bg-gray-800 text-white rounded-xl px-4 py-2.5 transition-colors"
@@ -137,6 +137,7 @@ export default function MobileAppSection() {
                 </div>
               </a>
             </div>
+            */}
           </div>
 
           {/* ── Right column: phones ── */}
