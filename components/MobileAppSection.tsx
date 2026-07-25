@@ -54,7 +54,7 @@ export default function MobileAppSection() {
             />
           </div>
 
-          {/* Store badges — temporarily hidden
+          {/*
           <p className="text-xs text-gray-500 font-medium mb-4">Coming soon to:</p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
@@ -108,7 +108,8 @@ export default function MobileAppSection() {
               while growing together.
             </p>
 
-            {/* Store badges — temporarily hidden
+            {/* Store badges */}
+            {/*
             <p className="text-xs text-gray-500 font-medium mb-4">Coming soon to:</p>
             <div className="flex items-center gap-3 flex-wrap">
               <a

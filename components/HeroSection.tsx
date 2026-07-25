@@ -57,7 +57,7 @@ export default function HeroSection() {
 
         {/* Tagline */}
         <p className="text-[17px] sm:text-[18px] lg:text-[20px] leading-relaxed mb-8 sm:mb-10 lg:mb-12 max-w-2xl mx-auto" style={{ color: "#6F6C90" }}>
-          Turn insights into action.
+          Canada&apos;s all-in-one AI marketing platform for small business growth.
           <br />
           Connect. Post. Grow.
         </p>
