@@ -80,38 +80,42 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`text-sm py-1 ${
-                item.active
-                  ? "text-gray-900 font-medium"
-                  : "text-gray-500"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+      <div
+        className={`md:hidden absolute top-full inset-x-0 bg-white border-t border-gray-100 shadow-lg px-6 py-4 flex flex-col gap-4 origin-top transition-all duration-300 ease-in-out ${
+          open
+            ? "opacity-100 translate-y-0 visible"
+            : "opacity-0 -translate-y-2 invisible pointer-events-none"
+        }`}
+      >
+        {navLinks.map((item) => (
           <a
-            href="https://staging.flyrinzo.com"
+            key={item.label}
+            href={item.href}
             onClick={() => setOpen(false)}
-            className="text-center bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
+            className={`text-sm py-1 ${
+              item.active
+                ? "text-gray-900 font-medium"
+                : "text-gray-500"
+            }`}
           >
-            Login
+            {item.label}
           </a>
-          <a
-            href="https://staging.flyrinzo.com"
-            onClick={() => setOpen(false)}
-            className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
-          >
-            Get Started
-          </a>
-        </div>
-      )}
+        ))}
+        <a
+          href="https://staging.flyrinzo.com"
+          onClick={() => setOpen(false)}
+          className="text-center bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
+        >
+          Login
+        </a>
+        <a
+          href="https://staging.flyrinzo.com"
+          onClick={() => setOpen(false)}
+          className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
+        >
+          Get Started
+        </a>
+      </div>
     </header>
   );
 }
