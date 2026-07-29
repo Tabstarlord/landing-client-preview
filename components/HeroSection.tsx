@@ -85,7 +85,31 @@ export default function HeroSection() {
           </button>
         </div>
 
-       
+        {/* sm+: Login / Get Started buttons */}
+        <div className="hidden sm:flex items-center border justify-center gap-4">
+          <a
+            href="https://staging.flyrinzo.com"
+            className="px-10 lg:px-12 h-13 lg:h-14 rounded-lg border-2 text-base font-semibold transition-all hover:scale-105 hover:shadow-lg flex items-center justify-center"
+            style={{
+              borderColor: "#FBBF24",
+              color: "#FBBF24",
+              backgroundColor: "white"
+            }}
+          >
+            Login
+          </a>
+          <a
+            href="https://staging.flyrinzo.com"
+            className="px-10 lg:px-12 h-13 lg:h-14 rounded-lg text-base font-semibold transition-all hover:scale-105 flex items-center justify-center"
+            style={{
+              backgroundColor: "#FBBF24",
+              color: "#000000",
+              boxShadow: "0 4px 14px 0 rgba(251, 191, 36, 0.4)"
+            }}
+          >
+            Get Started
+          </a>
+        </div>
       </div>
 
       {/* Mobile: phone-mockup screenshot (pending asset) */}

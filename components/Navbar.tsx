@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
-import Link from "next/link";
 
 const navLinks = [
   { label: "Home", href: "#", active: true },
@@ -41,12 +40,18 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             {/* CTA */}
-            <Link
-              href="/contact-us"
-              className="hidden md:inline-flex text-yellow-400 flex-shrink-0 bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold text-sm px-5 py-2.5  transition-colors"
+            <a
+              href="https://staging.flyrinzo.com"
+              className="hidden md:inline-flex flex-shrink-0 bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
             >
-              Contact Us
-            </Link>
+              Login
+            </a>
+            <a
+              href="https://staging.flyrinzo.com"
+              className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-gray-900 font-semibold text-sm px-5 py-2.5 transition-colors"
+            >
+              Get Started
+            </a>
 
             {/* Hamburger — mobile only */}
             <button
@@ -91,6 +96,20 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+          <a
+            href="https://staging.flyrinzo.com"
+            onClick={() => setOpen(false)}
+            className="text-center bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
+          >
+            Login
+          </a>
+          <a
+            href="https://staging.flyrinzo.com"
+            onClick={() => setOpen(false)}
+            className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-gray-900 font-semibold text-sm px-5 py-2.5 transition-colors"
+          >
+            Get Started
+          </a>
         </div>
       )}
     </header>
