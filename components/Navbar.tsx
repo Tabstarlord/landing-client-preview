@@ -48,7 +48,7 @@ export default function Navbar() {
             </a>
             <a
               href="https://staging.flyrinzo.com"
-              className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-gray-900 font-semibold text-sm px-5 py-2.5 transition-colors"
+              className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
             >
               Get Started
             </a>
@@ -106,7 +106,7 @@ export default function Navbar() {
           <a
             href="https://staging.flyrinzo.com"
             onClick={() => setOpen(false)}
-            className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-gray-900 font-semibold text-sm px-5 py-2.5 transition-colors"
+            className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
           >
             Get Started
           </a>
