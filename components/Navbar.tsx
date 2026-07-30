@@ -41,13 +41,13 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* CTA */}
             <a
-              href="https://staging.flyrinzo.com"
+              href="https://app.flyrinzo.com"
               className="hidden md:inline-flex flex-shrink-0 bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
             >
               Login
             </a>
             <a
-              href="https://staging.flyrinzo.com"
+              href="https://app.flyrinzo.com"
               className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
             >
               Get Started
@@ -102,14 +102,14 @@ export default function Navbar() {
           </a>
         ))}
         <a
-          href="https://staging.flyrinzo.com"
+          href="https://app.flyrinzo.com"
           onClick={() => setOpen(false)}
           className="text-center bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
         >
           Login
         </a>
         <a
-          href="https://staging.flyrinzo.com"
+          href="https://app.flyrinzo.com"
           onClick={() => setOpen(false)}
           className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
         >
