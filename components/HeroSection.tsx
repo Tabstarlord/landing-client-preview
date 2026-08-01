@@ -1,21 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import HeroShowcase from "./HeroShowcase";
 import PhoneFrame from "./PhoneFrame";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Image from "next/image";
 
 export default function HeroSection() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-
-  function handleGetInsights() {
-    const params = email.trim() ? `?email=${encodeURIComponent(email.trim())}` : "";
-    router.push(`/contact-us${params}`);
-  }
-
   return (
     <section
       className="overflow-hidden pb-0"
@@ -62,30 +52,31 @@ export default function HeroSection() {
           Connect. Post. Grow.
         </p>
 
-        {/* Mobile: email capture */}
-        <div className=" flex flex-col lg:flex-row gap-3  w-full lg:w-[60%]  max-w-md mx-auto">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter Email Address"
-            className="w-full h-12 min-h-12 rounded-lg flex-1 border border-gray-300 px-4 text-[15px] text-gray-700 placeholder-gray-500 outline-none focus:border-amber-400"
-          />
-          <button
-            type="button"
-            onClick={handleGetInsights}
-            className="w-full h-12 rounded-lg text-[15px] w-full px-[10px] lg:w-[192px] font-bold transition-all hover:scale-105"
+        {/* Login / Get Started buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mt-4">
+          <a
+            href="https://app.flyrinzo.com"
+            className="w-full sm:w-auto px-10 lg:px-12 h-13 lg:h-14 rounded-lg border-2 text-base font-semibold transition-all hover:scale-105 hover:shadow-lg flex items-center justify-center"
+            style={{
+              borderColor: "#FBBF24",
+              color: "#FBBF24",
+              backgroundColor: "white"
+            }}
+          >
+            Login
+          </a>
+          <a
+            href="https://app.flyrinzo.com"
+            className="w-full sm:w-auto px-10 lg:px-12 h-13 lg:h-14 rounded-lg text-base font-semibold transition-all hover:scale-105 flex items-center justify-center"
             style={{
               backgroundColor: "#FBBF24",
               color: "#FFFFFF",
-              boxShadow: "0 4px 14px 0 rgba(251, 191, 36, 0.4)",
+              boxShadow: "0 4px 14px 0 rgba(251, 191, 36, 0.4)"
             }}
           >
-            Get free insights
-          </button>
+            Get Started
+          </a>
         </div>
-
-       
       </div>
 
       {/* Mobile: phone-mockup screenshot (pending asset) */}

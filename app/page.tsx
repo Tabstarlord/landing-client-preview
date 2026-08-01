@@ -48,7 +48,7 @@ export default function Home() {
         <WhyWeBuiltSection />
         <HowItWorksSection />
         <MobileAppSection />
-        <BookMeetingSection />
+        {/* <BookMeetingSection /> */}
       </main>
       <Footer />
     </>

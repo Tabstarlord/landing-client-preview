@@ -55,12 +55,12 @@ export default function HeroShowcase() {
         <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-xs">
           {slide.description}
         </p>
-        <Link
+        {/* <Link
           href="/contact-us"
           className="self-start border-2 border-amber-400 text-amber-500 font-semibold text-sm rounded-xl px-6 py-3 mb-8 hover:bg-amber-50 transition-colors"
         >
           Get Free Insights
-        </Link>
+        </Link> */}
 
         {/* Slide indicators */}
         <div className="flex items-center gap-2">
