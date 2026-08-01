@@ -28,15 +28,15 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-12">
 
           {/* Left: logo + description + links */}
-          <div className="max-w-sm w-full">
+          <div className=" w-full">
             <div className="mb-5">
               <FlyrinzoLogo />
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed text-justify mb-3">
+            <p className="text-gray-500 text-sm max-w-sm leading-relaxed text-justify mb-3">
               We&apos;re not just building tools we&apos;re creating a smarter way for small businesses
               to grow, connect, and succeed. Join us, and let&apos;s create the future together.
             </p>
-            <div className="flex flex-col items-start gap-x-6 gap-y-2">
+            <div className="flex flex-col lg:flex-row items-start gap-x-6 gap-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
