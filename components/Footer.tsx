@@ -6,6 +6,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 
 const navLinks = [
   { label: "Features", href: "#features" },
+  { label: "Contact Us", href: "/contact-us" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Use", href: "/terms" },
   { label: "Data Deletion", href: "/data-deletion" },
@@ -27,20 +28,20 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-12">
 
           {/* Left: logo + description + links */}
-          <div className="max-w-sm w-full">
+          <div className=" w-full">
             <div className="mb-5">
               <FlyrinzoLogo />
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed text-justify mb-8">
+            <p className="text-gray-500 text-sm max-w-sm leading-relaxed text-justify mb-3">
               We&apos;re not just building tools we&apos;re creating a smarter way for small businesses
               to grow, connect, and succeed. Join us, and let&apos;s create the future together.
             </p>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <div className="flex flex-col lg:flex-row items-start gap-x-6 gap-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-gray-800 font-medium hover:text-gray-600 transition-colors"
+                  className="text-sm text-gray-500 font-regular  hover:text-gray-600 transition-colors"
                 >
                   {link.label}
                 </a>

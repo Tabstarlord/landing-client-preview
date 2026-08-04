@@ -18,7 +18,7 @@ export default function FeaturesSection() {
             <svg className="w-3 h-3" viewBox="0 0 12 12" fill="currentColor">
               <path d="M6 0L7.5 4.5H12L8.25 7.25L9.75 12L6 9.25L2.25 12L3.75 7.25L0 4.5H4.5L6 0Z" />
             </svg>
-            Features
+            Solutions
           </span>
         </div>
 
