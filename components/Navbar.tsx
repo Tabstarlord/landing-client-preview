@@ -5,7 +5,7 @@ import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 
 const navLinks = [
   { label: "Home", href: "#", active: true },
-  { label: "Features", href: "#features", active: false },
+  { label: "Solutions", href: "#solutions", active: false },
   { label: "Why Flyrinzo", href: "#why", active: false },
   { label: "How Flyrinzo works", href: "#how", active: false },
 ];
