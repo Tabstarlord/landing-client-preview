@@ -5,7 +5,7 @@ import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import NewsletterSection from "@/components/NewsletterSection";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Solutions", href: "#solutions" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Use", href: "/terms" },
