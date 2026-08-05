@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Home", href: "#", active: true },
@@ -46,12 +47,12 @@ export default function Navbar() {
             >
               Login
             </a>
-            <a
-              href="https://app.flyrinzo.com"
+            <Link
+              href="/contact-us"
               className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
             >
               Get Started
-            </a>
+            </Link>
 
             {/* Hamburger — mobile only */}
             <button
