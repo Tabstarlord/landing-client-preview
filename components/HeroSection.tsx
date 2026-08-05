@@ -66,7 +66,7 @@ export default function HeroSection() {
             Login
           </a>
           <a
-            href="https://app.flyrinzo.com/login"
+            href="/contact-us"
             className="w-full sm:w-auto px-10 lg:px-12 h-13 lg:h-14 rounded-lg text-base font-semibold transition-all hover:scale-105 flex items-center justify-center"
             style={{
               backgroundColor: "#FBBF24",

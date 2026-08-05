@@ -109,13 +109,13 @@ export default function Navbar() {
         >
           Login
         </a>
-        <a
-          href="https://app.flyrinzo.com/login"
+        <Link
+          href="/contact-us"
           onClick={() => setOpen(false)}
           className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
         >
           Get Started
-        </a>
+        </Link>
       </div>
     </header>
   );
