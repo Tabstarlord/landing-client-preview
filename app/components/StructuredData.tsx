@@ -19,7 +19,7 @@ export default function StructuredData() {
       contactType: "Customer Support"
     },
     sameAs: [
-      "https://www.facebook.com/share/1HxEWr967T/?mibextid=wwXIfr",
+      "https://www.facebook.com/share/1DKmgQi8Rz/?mibextid=wwXIfr",
       "https://www.instagram.com/useflyrinzo",
       "https://www.tiktok.com/@getflyrinzo"
     ]
