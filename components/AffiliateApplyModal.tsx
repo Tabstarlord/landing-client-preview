@@ -3,6 +3,22 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "https://flyrinzo-api-server-1.onrender.com/api";
+
+const slug = (label: string) =>
+  label.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9+-]+/g, "_").replace(/^_+|_+$/g, "");
+
+// Display labels whose API value isn't a plain slug of the label.
+const API_VALUES: Record<string, string> = {
+  Retails: "retail",
+  "Beauty & Hair Salon": "beauty_hair_salon",
+  Constructions: "construction",
+  "Restaurant & Food": "restaurant_food",
+  "Fitness & Gym": "fitness_gym",
+};
+const toApi = (label: string) => API_VALUES[label] ?? slug(label);
+
 const COUNTRIES = [
   { name: "Canada", flag: "🇨🇦" },
   { name: "United States", flag: "🇺🇸" },
@@ -105,6 +121,8 @@ export default function AffiliateApplyModal({ open, onClose }: { open: boolean; 
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<Form>(initial);
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setForm((f) => ({ ...f, [k]: v }));
 
@@ -123,14 +141,55 @@ export default function AffiliateApplyModal({ open, onClose }: { open: boolean; 
 
   const emailOk = /^\S+@\S+\.\S+$/.test(form.email) && form.email === form.confirmEmail;
   const valid =
-    step === 1 ? emailOk && form.phone.trim().length > 4 && !!form.country && !!form.role
+    step === 1 ? form.firstName.trim() !== "" && form.lastName.trim() !== "" && emailOk && form.phone.trim().length > 4 && !!form.country && !!form.role
     : step === 2 ? form.businessTypes.length > 0 && form.networkDescription.trim() !== "" && form.connectMethods.length > 0
     : step === 3 ? form.reason.trim() !== "" && form.interests.length > 0
     : form.confirmed;
 
   function close() {
     onClose();
-    setTimeout(() => { setStep(1); setForm(initial); setDone(false); }, 200);
+    setTimeout(() => { setStep(1); setForm(initial); setDone(false); setSubmitError(""); }, 200);
+  }
+
+  async function submit() {
+    setSubmitError("");
+    setSubmitting(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/affiliates/applications`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: form.firstName.trim(),
+          lastName: form.lastName.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          country: form.country,
+          role: toApi(form.role),
+          businessCount: form.networkSize,
+          businessTypes: form.businessTypes.map(toApi),
+          networkDescription: form.networkDescription.trim(),
+          connectionMethods: form.connectMethods.map(toApi),
+          facebookHandle: form.facebook.trim() || undefined,
+          instagramHandle: form.instagram.trim() || undefined,
+          reason: form.reason.trim(),
+          programInterests: form.interests.map(toApi),
+          hasPreviousReferralExperience: form.referredBefore === "YES",
+          experienceDescription:
+            form.referredBefore === "YES" ? form.experience.trim() || undefined : undefined,
+          confirmedAccuracy: form.confirmed,
+        }),
+      });
+      if (res.status === 409) {
+        setSubmitError("An application with this email has already been submitted.");
+        return;
+      }
+      if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
+      setDone(true);
+    } catch {
+      setSubmitError("Something went wrong submitting your application. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const summary: [string, [string, string][]][] = [
@@ -196,9 +255,9 @@ export default function AffiliateApplyModal({ open, onClose }: { open: boolean; 
             aria-modal="true"
             onSubmit={(e) => {
               e.preventDefault();
-              if (!valid) return;
+              if (!valid || submitting) return;
               if (step < 4) setStep(step + 1);
-              else setDone(true);
+              else void submit();
             }}
             className="bg-white rounded-xl shadow-2xl w-full max-w-[560px] p-5 sm:p-6"
           >
@@ -313,14 +372,16 @@ export default function AffiliateApplyModal({ open, onClose }: { open: boolean; 
               </div>
             )}
 
+            {submitError && step === 4 && <p className="mt-4 text-sm text-red-500">{submitError}</p>}
+
             <div className={`mt-6 flex items-center ${step > 1 ? "justify-between" : "justify-end"}`}>
               {step > 1 && (
                 <button type="button" onClick={() => setStep(step - 1)} className="bg-[#6F6C90] hover:bg-[#5f5c7e] text-white font-semibold text-sm px-6 py-3 rounded-md transition-colors">
                   Back
                 </button>
               )}
-              <button type="submit" disabled={!valid} className="bg-yellow-400 hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm px-8 py-3 rounded-md transition-colors">
-                {step === 4 ? "Submit" : "Continue"}
+              <button type="submit" disabled={!valid || submitting} className="bg-yellow-400 hover:bg-yellow-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm px-8 py-3 rounded-md transition-colors">
+                {step === 4 ? (submitting ? "Submitting..." : "Submit") : "Continue"}
               </button>
             </div>
           </form>
