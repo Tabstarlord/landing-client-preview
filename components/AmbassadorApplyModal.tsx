@@ -117,7 +117,7 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 
 const toggle = (list: string[], v: string) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
 
-export default function AffiliateApplyModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export default function AmbassadorApplyModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<Form>(initial);
   const [done, setDone] = useState(false);
@@ -155,7 +155,7 @@ export default function AffiliateApplyModal({ open, onClose }: { open: boolean; 
     setSubmitError("");
     setSubmitting(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/affiliates/applications`, {
+      const res = await fetch(`${API_BASE_URL}/ambassadors/applications`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
