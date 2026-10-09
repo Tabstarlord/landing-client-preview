@@ -18,23 +18,74 @@ const navLinks = [
 ];
 
 const faqs = [
-  "What is the Flyrinzo Growth Partner Program?",
-  "Do I need to be an influencer?",
-  "Is there a fee to join?",
-  "What happens after I apply?",
-  "What happens during the onboarding?",
-  "How do I refer a business?",
-  "Can I onboard businesses in person?",
-  "Does a free signup count toward my $10,000 milestone?",
-  "What is a qualified business?",
-  "When do I get paid?",
-  "How do I know how many businesses I have referred?",
-  "Can I really earn $10,000?",
-  "Do I have to personally provide customer support?",
-  "Can businesses I refer participate in the Empower 500 campaign?",
-  "Can I run social media content promoting Flyrinzo?",
-  "What happens when I reach 500 qualified customers?",
-  "What if I have more questions?",
+  {
+    q: "What is the Flyrinzo Growth Partner Program?",
+    a: "The Flyrinzo Growth Partner Program allows approved partners to introduce small businesses to Flyrinzo, help them get started and earn rewards based on qualified customers they generate.",
+  },
+  {
+    q: "Do I need to be an influencer?",
+    a: "No. You do not need thousands of followers or a large social media audience. We welcome creators, entrepreneurs, students, sales professionals, community connectors and anyone with genuine relationships with small businesses.",
+  },
+  {
+    q: "Is there a fee to join?",
+    a: "No. There is no application fee to apply to become a Flyrinzo Growth Partner.",
+  },
+  {
+    q: "What happens after I apply?",
+    a: "Our team will review your application. Selected applicants will be invited to complete an approximately 30-minute onboarding session with a Flyrinzo Partner Success Specialist.",
+  },
+  {
+    q: "What happens during the onboarding?",
+    a: "You'll learn how Flyrinzo works, how to introduce it to businesses, how to use your referral tools, how referrals are tracked and how the rewards program works.",
+  },
+  {
+    q: "How do I refer a business?",
+    a: "Approved Growth Partners receive a unique referral link and/or QR code. Businesses that register through your unique referral source are connected to your partner account for tracking purposes.",
+  },
+  {
+    q: "Can I onboard businesses in person?",
+    a: "Yes. You can introduce Flyrinzo online or through genuine conversations with eligible businesses in your community, subject to the Growth Partner Program terms and applicable marketing requirements.",
+  },
+  {
+    q: "Does a free signup count toward my $10,000 milestone?",
+    a: "Free registrations may appear in your referral dashboard, but milestone rewards are based on qualified paying businesses that meet the requirements of the Growth Partner Program.",
+  },
+  {
+    q: "What is a qualified business?",
+    a: "A qualified business is an eligible business that registers through your approved referral source, completes the required account activation process and meets the applicable paid-customer requirements. Duplicate, fraudulent, self-referred or otherwise ineligible accounts do not qualify.",
+  },
+  {
+    q: "When do I get paid?",
+    a: "Eligible commissions and milestone rewards are calculated according to the Flyrinzo Growth Partner payout schedule and displayed through your partner dashboard.",
+  },
+  {
+    q: "How do I know how many businesses I have referred?",
+    a: "Your Flyrinzo Growth Partner dashboard will allow you to monitor your referrals, activated businesses, qualified customers, commissions and progress toward your next milestone.",
+  },
+  {
+    q: "Can I really earn $10,000?",
+    a: "Partners who satisfy the requirements for the applicable milestones can unlock cumulative milestone rewards of up to $10,000. Earnings are performance-based and are not guaranteed.",
+  },
+  {
+    q: "Do I have to personally provide customer support?",
+    a: "No. Your job is to introduce eligible businesses and help them complete the initial onboarding process. Flyrinzo manages ongoing platform support for its customers.",
+  },
+  {
+    q: "Can businesses I refer participate in the Empower 500 campaign?",
+    a: "Eligible businesses may participate while campaign spaces remain available and provided they meet the applicable campaign requirements.",
+  },
+  {
+    q: "Can I run social media content promoting Flyrinzo?",
+    a: "Yes. Approved partners can promote Flyrinzo using their unique referral link and approved marketing resources. Any promotional relationship with Flyrinzo should be clearly disclosed.",
+  },
+  {
+    q: "What happens when I reach 500 qualified customers?",
+    a: "Once 500 qualified businesses have met the applicable program requirements, you will have reached the highest published milestone of $10,000 in cumulative milestone rewards, subject to verification and the Growth Partner Program terms.",
+  },
+  {
+    q: "What if I have more questions?",
+    a: "Your Flyrinzo Partner Success Specialist and partner resources will be available to help you understand the program and get started.",
+  },
 ];
 
 const icon = "w-9 h-9";
@@ -296,7 +347,7 @@ export default function AmbassadorPage() {
       <section className="px-6 pt-16 pb-16 max-w-3xl mx-auto">
         <h2 className="text-center text-xl font-semibold text-gray-700 mb-8">Frequently Asked Questions</h2>
         <div className="bg-white rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.06)] p-6 md:p-8 space-y-2.5">
-          {faqs.map((q, i) => {
+          {faqs.map(({ q, a }, i) => {
             const open = openFaq === i;
             return (
               <div key={q} className="bg-gray-50 rounded-md">
@@ -311,13 +362,7 @@ export default function AmbassadorPage() {
                   </svg>
                 </button>
                 {open && (
-                  <p className="px-4 pb-4 text-xs text-gray-500 leading-relaxed">
-                    Reach out to us through the{" "}
-                    <Link href="/contact-us" className="text-yellow-500 underline">
-                      contact page
-                    </Link>{" "}
-                    and the Flyrinzo team will walk you through the details.
-                  </p>
+                  <p className="px-4 pb-4 text-xs text-gray-500 leading-relaxed">{a}</p>
                 )}
               </div>
             );

@@ -12,6 +12,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Affiliate & Ambassador Program -->
+  <url>
+    <loc>https://www.flyrinzo.com/ambassador/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Privacy Policy -->
   <url>
     <loc>https://www.flyrinzo.com/privacy/</loc>
