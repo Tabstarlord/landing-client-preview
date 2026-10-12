@@ -37,7 +37,7 @@ export default function FeatureComparison() {
     <section className="pb-20">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <h2 className="mb-8 text-center text-2xl font-bold text-gray-900">Features Comparison</h2>
-        <div className="overflow-x-auto rounded-lg border border-gray-200">
+        <div className="relative overflow-x-auto rounded-lg border border-gray-200">
           <table className="w-full min-w-[720px] border-collapse text-center text-xs text-gray-700">
             <thead>
               <tr className="border-b border-gray-200">
