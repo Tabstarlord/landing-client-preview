@@ -175,9 +175,11 @@ export default function AffiliatePage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="text-center px-6 pt-16 pb-14 max-w-2xl mx-auto">
+      <section className="text-center px-6 pt-16 pb-14 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
-          Help Small Businesses <span className="text-yellow-400">Grow</span>.
+          <span className="md:whitespace-nowrap">
+            Help Small Businesses <span className="text-yellow-400">Grow</span>.
+          </span>
           <br />
           Get Rewarded.
         </h1>
