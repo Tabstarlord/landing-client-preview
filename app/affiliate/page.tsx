@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import Footer from "@/components/Footer";
-import AmbassadorApplyModal from "@/components/AmbassadorApplyModal";
+import AffiliateApplyModal from "@/components/AffiliateApplyModal";
 
 const PER_REFERRAL = 15;
 const MAX_REFERRALS = 500;
@@ -100,17 +100,17 @@ const steps = [
   {
     title: "Express Your Interest",
     text: "Complete a short application telling us about you.",
-    icon: "/ambassador/express-interest.svg",
+    icon: "/affiliate/express-interest.svg",
   },
   {
     title: "Get Accepted & Trained",
     text: "Learn how Flyrinzo, referrals, QR codes and rewards work.",
-    icon: "/ambassador/accepted-trained.svg",
+    icon: "/affiliate/accepted-trained.svg",
   },
   {
     title: "Onboard Small Businesses",
     text: "Introduce businesses using your unique referral link or QR code.",
-    icon: "/ambassador/onboard-businesses.svg",
+    icon: "/affiliate/onboard-businesses.svg",
   },
 ];
 
@@ -118,7 +118,7 @@ const perks = [
   {
     title: "Earn From Your Referrals",
     text: "Turn your network into an opportunity. Earn rewards when people you refer join Flyrinzo and meet the program requirements.",
-    icon: "/ambassador/earn-referrals.svg",
+    icon: "/affiliate/earn-referrals.svg",
   },
   {
     title: "Grow Your Influence",
@@ -132,17 +132,17 @@ const perks = [
   {
     title: "Track Your Growth",
     text: "See your referrals, conversions, rewards, and ambassador progress in one place with your dedicated dashboard.",
-    icon: "/ambassador/track-growth.svg",
+    icon: "/affiliate/track-growth.svg",
   },
   {
     title: "Unlock Ambassador Perks",
     text: "Progress through the ambassador program and unlock exclusive opportunities, recognition, resources, and program benefits as you grow.",
-    icon: "/ambassador/ambassador-perks.svg",
+    icon: "/affiliate/ambassador-perks.svg",
   },
   {
     title: "Help businesses grow",
     text: "Introduce businesses to smarter marketing with Flyrinzo. You bring the relationships. Flyrinzo gives businesses the AI-powered tools they need.",
-    icon: "/ambassador/help-businesses.svg",
+    icon: "/affiliate/help-businesses.svg",
   },
   {
     title: "Easy to Share",
@@ -156,9 +156,9 @@ const perks = [
 ];
 
 // Rectangle 2–10 exports, in grid order (even = rounded square, odd = circle)
-const avatars = Array.from({ length: 9 }, (_, i) => `/ambassador/avatar-${i + 2}.svg`);
+const avatars = Array.from({ length: 9 }, (_, i) => `/affiliate/avatar-${i + 2}.svg`);
 
-function ApplyButton({ label = "Become an Ambassador", className = "", onClick }: { label?: string; className?: string; onClick: () => void }) {
+function ApplyButton({ label = "Become an Affiliate", className = "", onClick }: { label?: string; className?: string; onClick: () => void }) {
   return (
     <button
       type="button"
@@ -170,7 +170,7 @@ function ApplyButton({ label = "Become an Ambassador", className = "", onClick }
   );
 }
 
-export default function AmbassadorPage() {
+export default function AffiliatePage() {
   const [referrals, setReferrals] = useState(56);
   const [applyOpen, setApplyOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -296,7 +296,7 @@ export default function AmbassadorPage() {
           <div className="bg-yellow-50 rounded-xl p-5 flex flex-col items-center text-center">
             <p className="text-[11px] text-gray-700">Referral earning</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/ambassador/earn-referrals.svg" alt="" className="w-8 h-8 mt-2" />
+            <img src="/affiliate/earn-referrals.svg" alt="" className="w-8 h-8 mt-2" />
             <p className="text-4xl font-bold text-yellow-500 mt-2">${earnings.toLocaleString()}</p>
             <p className="text-[11px] text-gray-700 mt-1">at ${PER_REFERRAL} per referral</p>
             <hr className="w-full border-yellow-100 my-4" />
@@ -401,7 +401,7 @@ export default function AmbassadorPage() {
       </section>
 
       <Footer />
-      <AmbassadorApplyModal open={applyOpen} onClose={() => setApplyOpen(false)} />
+      <AffiliateApplyModal open={applyOpen} onClose={() => setApplyOpen(false)} />
     </main>
   );
 }

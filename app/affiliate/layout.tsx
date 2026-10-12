@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-const PAGE_URL = "https://www.flyrinzo.com/ambassador/";
+const PAGE_URL = "https://www.flyrinzo.com/affiliate/";
 const TITLE = "Earn With Flyrinzo | Affiliate & Ambassador Program";
-// TODO: replace with the approved 1200x630 branded artwork (public/ambassador-og.png) before launch.
-const SHARE_IMAGE = "/ambassador-og.png";
+// TODO: replace with the approved 1200x630 branded artwork (public/affiliate-og.png) before launch.
+const SHARE_IMAGE = "/affiliate-og.png";
 const SHARE_IMAGE_ALT = "Earn With Flyrinzo - Affiliate and Ambassador Program";
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: "Flyrinzo", url: "https://www.flyrinzo.com/" }
 };
 
-export default function AmbassadorLayout({ children }: { children: React.ReactNode }) {
+export default function AffiliateLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <script

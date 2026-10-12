@@ -6,7 +6,7 @@ import NewsletterSection from "@/components/NewsletterSection";
 
 const navLinks = [
   { label: "Solutions", href: "#solutions" },
-  { label: "Ambassadors", href: "/ambassador" },
+  { label: "Earn", href: "/affiliate" },
   { label: "Contact Us", href: "/contact-us" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Use", href: "/terms" },
