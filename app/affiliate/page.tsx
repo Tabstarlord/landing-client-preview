@@ -47,8 +47,8 @@ const faqs = [
     a: "Yes. You can introduce Flyrinzo online or through genuine conversations with eligible businesses in your community, subject to the Growth Partner Program terms and applicable marketing requirements.",
   },
   {
-    q: "Does a free signup count toward my $10,000 milestone?",
-    a: "Free registrations may appear in your referral dashboard, but milestone rewards are based on qualified paying businesses that meet the requirements of the Growth Partner Program.",
+    q: "Does a signup count toward my $10,000 milestone?",
+    a: "Registrations may appear in your referral dashboard, but milestone rewards are based on qualified paying businesses that meet the requirements of the Growth Partner Program.",
   },
   {
     q: "What is a qualified business?",

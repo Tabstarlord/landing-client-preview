@@ -5,9 +5,9 @@ import { useState } from "react";
 
 const steps = [
   {
-    title: "Create Your Free Account",
-    intro: "Start Free in Minutes",
-    body: "Create your account and set up your business profile in less than a minute. No credit card required. No commitment. Just instant access to smarter marketing tools built for small businesses.",
+    title: "Create Your Account",
+    intro: "Get Started in Minutes",
+    body: "Create your account and set up your business profile in less than a minute. Just instant access to smarter marketing tools built for small businesses.",
     bullets: [] as string[],
     outro: "",
     screenshot: { src: "/Sign up.webp", width: 3152, height: 2228 },
