@@ -1,21 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AffiliateApplyModal from "@/components/AffiliateApplyModal";
 
 const PER_REFERRAL = 15;
 const MAX_REFERRALS = 500;
 const MILESTONES = [100, 200, 300, 400, 500];
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Features", href: "/#solutions" },
-  { label: "Why Flyrinzo", href: "/#why" },
-  { label: "How Flyrinzo works", href: "/#how" },
-];
 
 const faqs = [
   {
@@ -180,24 +172,7 @@ export default function AffiliatePage() {
   return (
     <main className="bg-white text-gray-900">
       {/* Nav */}
-      <header className="bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-          <FlyrinzoLogo className="flex-shrink-0" />
-          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((l) => (
-              <Link key={l.label} href={l.href} className="text-xs text-gray-900 hover:text-gray-600">
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-          <Link
-            href="/contact-us"
-            className="border border-yellow-400 text-yellow-500 hover:bg-yellow-50 text-xs font-semibold px-5 py-2.5 rounded-md transition-colors"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero */}
       <section className="text-center px-6 pt-16 pb-14 max-w-2xl mx-auto">
