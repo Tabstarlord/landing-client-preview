@@ -3,16 +3,25 @@
 import { useState } from "react";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
+// Anchors are rooted at "/" so they also work from other pages.
 const navLinks = [
-  { label: "Home", href: "#", active: true },
-  { label: "Solutions", href: "#solutions", active: false },
-  { label: "Why Flyrinzo", href: "#why", active: false },
-  { label: "How Flyrinzo works", href: "#how", active: false },
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Why Flyrinzo", href: "/#why" },
+  { label: "How Flyrinzo works", href: "/#how" },
+  { label: "Earn", href: "/affiliate" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname().replace(/\/$/, "") || "/";
+  const links = navLinks.map((link) => ({
+    ...link,
+    active: link.href === pathname,
+  }));
 
   return (
     <header className="sticky top-0 z-50 bg-white">
@@ -23,7 +32,7 @@ export default function Navbar() {
 
           {/* Desktop nav — centered */}
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((item) => (
+            {links.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -51,7 +60,7 @@ export default function Navbar() {
               href="/contact-us"
               className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
             >
-              Get Started
+              Start for C$0.99
             </Link>
 
             {/* Hamburger — mobile only */}
@@ -88,7 +97,7 @@ export default function Navbar() {
             : "opacity-0 -translate-y-2 invisible pointer-events-none"
         }`}
       >
-        {navLinks.map((item) => (
+        {links.map((item) => (
           <a
             key={item.label}
             href={item.href}
@@ -114,7 +123,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
           className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
         >
-          Get Started
+          Start for C$0.99
         </Link>
       </div>
     </header>
