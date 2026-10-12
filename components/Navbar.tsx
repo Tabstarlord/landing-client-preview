@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { usePricing } from "@/components/pricing/usePricing";
 
 // Anchors are rooted at "/" so they also work from other pages.
 const navLinks = [
@@ -17,6 +18,8 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { pricing } = usePricing();
+  const cta = pricing ? `Start for ${pricing.intro.formatted}` : "Get Started";
   const pathname = usePathname().replace(/\/$/, "") || "/";
   const links = navLinks.map((link) => ({
     ...link,
@@ -60,7 +63,7 @@ export default function Navbar() {
               href="/contact-us"
               className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
             >
-              Start for C$0.99
+              {cta}
             </Link>
 
             {/* Hamburger — mobile only */}
@@ -123,7 +126,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
           className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
         >
-          Start for C$0.99
+          {cta}
         </Link>
       </div>
     </header>

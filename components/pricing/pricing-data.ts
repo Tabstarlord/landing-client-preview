@@ -1,17 +1,9 @@
-/**
- * Public prices in CAD. Mirrors the app's plan matrix (plan-pricing.ts in the
- * API); update both together when a price changes.
- */
-export const INTRO_PRICE = "C$0.99";
-
 export type PlanId = "starter" | "growth" | "scale";
 
 export interface Plan {
   id: PlanId;
   name: string;
   tagline: string;
-  monthly: string;
-  yearly: string;
   popular?: boolean;
   features: string[];
 }
@@ -21,8 +13,6 @@ export const PLANS: Plan[] = [
     id: "starter",
     name: "Starter",
     tagline: "For businesses getting started online",
-    monthly: "C$9",
-    yearly: "C$90",
     features: [
       "Instagram, Facebook & TikTok",
       "30 scheduled post per month",
@@ -40,8 +30,6 @@ export const PLANS: Plan[] = [
     id: "growth",
     name: "Growth",
     tagline: "For growing business that wants consistency",
-    monthly: "C$29",
-    yearly: "C$290",
     popular: true,
     features: [
       "Instagram, Facebook & Tiktok",
@@ -61,8 +49,6 @@ export const PLANS: Plan[] = [
     id: "scale",
     name: "Scale",
     tagline: "For business scaling content and visibility",
-    monthly: "C$59",
-    yearly: "C$590",
     features: [
       "Instagram, facebook & Tiktok",
       "300 scheduled post per month",

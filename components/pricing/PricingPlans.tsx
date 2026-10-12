@@ -3,12 +3,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle, SocialBadge } from "./Icons";
-import { INTRO_PRICE, PLANS } from "./pricing-data";
+import { PLANS } from "./pricing-data";
+import { CURRENCY_OPTIONS, selectCurrency, usePricing } from "./usePricing";
 
 type Billing = "monthly" | "yearly";
 
 export default function PricingPlans() {
   const [billing, setBilling] = useState<Billing>("monthly");
+  const { pricing, override } = usePricing();
+  const currency = override ?? pricing?.currency ?? "";
 
   return (
     <>
@@ -19,7 +22,7 @@ export default function PricingPlans() {
               <rect x="2" y="6" width="12" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
               <path d="M2 9h12M8 6v8M8 6c-1.5 0-3-.7-3-2s2-1.5 3 2zM8 6c1.5 0 3-.7 3-2s-2-1.5-3 2z" stroke="currentColor" strokeWidth="1.2" />
             </svg>
-            All plans starts at {INTRO_PRICE} for your first month
+            All plans starts at {pricing?.intro.formatted ?? "…"} for your first month
           </span>
           <h1 className="mt-6 text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
             Simple Pricing for Every
@@ -50,6 +53,21 @@ export default function PricingPlans() {
               </button>
             ))}
           </div>
+
+          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
+            <label htmlFor="currency">Prices in</label>
+            <select
+              id="currency"
+              value={currency}
+              onChange={(e) => selectCurrency(e.target.value)}
+              className="rounded-md border border-gray-200 bg-white px-2 py-1 text-xs text-gray-700 outline-none focus:border-yellow-400"
+            >
+              {!currency && <option value="">…</option>}
+              {CURRENCY_OPTIONS.map((code) => (
+                <option key={code} value={code}>{code}</option>
+              ))}
+            </select>
+          </div>
         </div>
       </section>
 
@@ -77,25 +95,27 @@ export default function PricingPlans() {
                 </div>
               </div>
 
-              <div className="mt-5 text-center">
-                {billing === "monthly" ? (
+              <div className="mt-5 text-center min-h-[84px]">
+                {!pricing ? (
+                  <div className="mx-auto mt-1 h-16 w-36 animate-pulse rounded bg-gray-100" aria-label="Loading prices" />
+                ) : billing === "monthly" ? (
                   <>
                     <p className="text-3xl font-bold text-gray-900">
-                      {INTRO_PRICE} <span className="text-sm font-normal text-gray-500">first month</span>
+                      {pricing.intro.formatted} <span className="text-sm font-normal text-gray-500">first month</span>
                     </p>
                     <p className="mt-1 text-sm text-gray-700">
                       Then{" "}
-                      <span className="font-semibold text-yellow-500">{plan.monthly}/month</span>
+                      <span className="font-semibold text-yellow-500">{pricing[plan.id].monthlyFormatted}/month</span>
                     </p>
                     <p className="text-sm text-gray-700">if you see value</p>
                   </>
                 ) : (
                   <>
                     <p className="text-3xl font-bold text-gray-900">
-                      {plan.yearly} <span className="text-sm font-normal text-gray-500">/year</span>
+                      {pricing[plan.id].yearlyFormatted} <span className="text-sm font-normal text-gray-500">/year</span>
                     </p>
                     <p className="mt-1 text-sm text-gray-700">
-                      Save <span className="font-semibold text-yellow-500">17%</span> vs monthly
+                      Save <span className="font-semibold text-yellow-500">{pricing[plan.id].yearlySavingsPercentage}%</span> vs monthly
                     </p>
                     <p className="text-sm text-gray-700">Billed once a year</p>
                   </>

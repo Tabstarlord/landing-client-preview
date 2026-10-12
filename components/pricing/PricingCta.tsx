@@ -1,13 +1,17 @@
+"use client";
+
 import Link from "next/link";
-import { INTRO_PRICE } from "./pricing-data";
+import { usePricing } from "./usePricing";
 
 export default function PricingCta() {
+  const { pricing } = usePricing();
+  const intro = pricing?.intro.formatted ?? "…";
   return (
     <section className="pb-20">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <div className="rounded-2xl bg-gradient-to-r from-yellow-200 to-yellow-100 px-6 py-8 md:px-8">
           <h2 className="text-lg md:text-xl font-bold text-gray-900">
-            Start your first month for just {INTRO_PRICE}
+            Start your first month for just {intro}
           </h2>
           <p className="mt-1 max-w-xl text-xs text-gray-600">
             Choose any plan. After 1 month, continue at the regular rate only if you see value. Cancel anytime.
