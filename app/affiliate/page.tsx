@@ -7,7 +7,13 @@ import AffiliateApplyModal from "@/components/AffiliateApplyModal";
 
 const PER_REFERRAL = 15;
 const MAX_REFERRALS = 500;
-const MILESTONES = [100, 200, 300, 400, 500];
+const MILESTONES = [
+  { count: 100, reward: 1000 },
+  { count: 200, reward: 3000 },
+  { count: 300, reward: 5000 },
+  { count: 400, reward: 7000 },
+  { count: 500, reward: 10000 },
+];
 
 const faqs = [
   {
@@ -241,10 +247,10 @@ export default function AffiliatePage() {
             <p className="text-sm font-semibold mt-6 mb-4">Milestones Reward</p>
             <div className="relative grid grid-cols-5 text-center">
               <div className="absolute top-2 left-[10%] right-[10%] border-t border-dashed border-yellow-300" />
-              {MILESTONES.map((m) => {
-                const reached = referrals >= m;
+              {MILESTONES.map(({ count, reward }) => {
+                const reached = referrals >= count;
                 return (
-                  <div key={m} className="relative flex flex-col items-center">
+                  <div key={count} className="relative flex flex-col items-center">
                     <span
                       className={`w-4 h-4 rounded-full border flex items-center justify-center bg-gray-50 ${
                         reached ? "border-yellow-400 bg-yellow-400 text-white" : "border-gray-300 text-gray-400"
@@ -254,8 +260,8 @@ export default function AffiliatePage() {
                         <path d="M3 6.2l2 2 4-4.4" />
                       </svg>
                     </span>
-                    <span className="mt-2 text-xs font-semibold">{m}</span>
-                    <span className="text-[11px] text-gray-500">$1000</span>
+                    <span className="mt-2 text-xs font-semibold">{count}</span>
+                    <span className="text-[11px] text-gray-500">${reward.toLocaleString()}</span>
                     <span className="text-[10px] text-gray-400">Total Reward</span>
                   </div>
                 );
@@ -276,7 +282,7 @@ export default function AffiliatePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/affiliate/earn-referrals.svg" alt="" className="w-8 h-8 mt-2" />
             <p className="text-4xl font-bold text-yellow-500 mt-2">${earnings.toLocaleString()}</p>
-            <p className="text-xs text-gray-700 mt-1">at ${PER_REFERRAL} per referral</p>
+            <p className="text-xs text-gray-700 mt-1">+ commission</p>
             <hr className="w-full border-yellow-100 my-4" />
             <p className="text-[11px] text-gray-500 leading-snug">
               Based on {referrals} referrals/mo on Growth plan. As your qualified Flyrinzo customer base grows,

@@ -4,14 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { CheckCircle, SocialBadge } from "./Icons";
 import { PLANS } from "./pricing-data";
-import { CURRENCY_OPTIONS, selectCurrency, usePricing } from "./usePricing";
+import { usePricing } from "./usePricing";
 
 type Billing = "monthly" | "yearly";
 
 export default function PricingPlans() {
   const [billing, setBilling] = useState<Billing>("monthly");
-  const { pricing, override } = usePricing();
-  const currency = override ?? pricing?.currency ?? "";
+  const { pricing } = usePricing();
 
   return (
     <>
@@ -52,21 +51,6 @@ export default function PricingPlans() {
                 {option}
               </button>
             ))}
-          </div>
-
-          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
-            <label htmlFor="currency">Prices in</label>
-            <select
-              id="currency"
-              value={currency}
-              onChange={(e) => selectCurrency(e.target.value)}
-              className="rounded-md border border-gray-200 bg-white px-2 py-1 text-xs text-gray-700 outline-none focus:border-yellow-400"
-            >
-              {!currency && <option value="">…</option>}
-              {CURRENCY_OPTIONS.map((code) => (
-                <option key={code} value={code}>{code}</option>
-              ))}
-            </select>
           </div>
         </div>
       </section>

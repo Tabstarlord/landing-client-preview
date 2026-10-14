@@ -23,7 +23,19 @@ export interface RegionalPricing {
   detectedCountry?: string | null;
 }
 
-export const CURRENCY_OPTIONS = ["USD", "CAD", "GBP", "EUR", "NGN", "ZAR"] as const;
+const EURO_COUNTRIES = new Set([
+  "AT", "BE", "CY", "DE", "EE", "ES", "FI", "FR", "GR", "HR", "IE", "IT",
+  "LT", "LU", "LV", "MT", "NL", "PT", "SI", "SK",
+]);
+
+/** Currencies the API prices in; any other country falls back to USD. */
+function currencyForCountry(country: string): string {
+  if (country === "CA") return "CAD";
+  if (country === "GB") return "GBP";
+  if (country === "NG") return "NGN";
+  if (country === "ZA") return "ZAR";
+  return EURO_COUNTRIES.has(country) ? "EUR" : "USD";
+}
 
 const tier = (monthly: number, yearly: number): RegionalTier => ({
   monthlyFormatted: `US$${monthly}`,
@@ -44,11 +56,9 @@ export const FALLBACK_PRICING: RegionalPricing = {
 
 interface State {
   pricing: RegionalPricing | null;
-  /** A currency the visitor picked, overriding detection. */
-  override: string | null;
 }
 
-let state: State = { pricing: null, override: null };
+let state: State = { pricing: null };
 let started = false;
 const listeners = new Set<() => void>();
 
@@ -57,31 +67,59 @@ function set(next: Partial<State>) {
   listeners.forEach((listener) => listener());
 }
 
-async function load(override: string | null) {
+async function load(currency: string | null): Promise<RegionalPricing | null> {
   try {
-    const url = `${API_BASE_URL}/subscriptions/pricing${override ? `?currency=${override}` : ""}`;
+    const url = `${API_BASE_URL}/subscriptions/pricing${currency ? `?currency=${currency}` : ""}`;
     const res = await fetch(url, { headers: { Accept: "application/json" } });
     if (!res.ok) throw new Error(`status ${res.status}`);
     const body = (await res.json()) as { data?: RegionalPricing };
     if (!body.data?.starter) throw new Error("unexpected response");
-    // Ignore a slow answer for a currency the visitor has since moved off.
-    if (state.override === override) set({ pricing: body.data });
+    set({ pricing: body.data });
+    return body.data;
   } catch {
-    if (state.override === override && !state.pricing) set({ pricing: FALLBACK_PRICING });
+    if (!state.pricing) set({ pricing: FALLBACK_PRICING });
+    return null;
   }
 }
 
-/** Picks a currency by hand; null goes back to detection. */
-export function selectCurrency(currency: string | null) {
-  set({ override: currency, pricing: null });
-  void load(currency);
+/** Asks the browser for its location and returns the country code, or null if declined or unavailable. */
+function countryFromBrowser(): Promise<string | null> {
+  if (typeof navigator === "undefined" || !navigator.geolocation) return Promise.resolve(null);
+  return new Promise((resolve) => {
+    navigator.geolocation.getCurrentPosition(
+      async ({ coords }) => {
+        try {
+          const res = await fetch(
+            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coords.latitude}&longitude=${coords.longitude}&localityLanguage=en`,
+          );
+          const body = (await res.json()) as { countryCode?: string };
+          resolve(body.countryCode ?? null);
+        } catch {
+          resolve(null);
+        }
+      },
+      () => resolve(null),
+      { timeout: 8000, maximumAge: 24 * 60 * 60 * 1000 },
+    );
+  });
+}
+
+async function init() {
+  const detected = await load(null);
+  // The API placed the visitor by IP; nothing more to do.
+  if (detected?.detectedCountry) return;
+  // Otherwise USD is showing; try the browser's location to localise it.
+  const country = await countryFromBrowser();
+  if (!country) return;
+  const currency = currencyForCountry(country);
+  if (currency !== (state.pricing?.currency ?? "USD")) void load(currency);
 }
 
 function subscribe(listener: () => void) {
   listeners.add(listener);
   if (!started) {
     started = true;
-    void load(null);
+    void init();
   }
   return () => listeners.delete(listener);
 }
