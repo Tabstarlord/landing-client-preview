@@ -204,7 +204,7 @@ export default function AffiliatePage() {
         <p className="mt-5 text-base text-gray-500 leading-relaxed max-w-md mx-auto">
           Unlock up to <strong className="text-gray-700">$10,000</strong>{" "}
           in milestone rewards by introducing
-          businesses to Flyrinzo. You don&apos;t need a huge following. <br/> You don&apos;t need an office. And you
+          businesses to Flyrinzo.<br/> You don&apos;t need a huge following.  You don&apos;t need an office. And you
           don&apos;t need expensive equipment.
         </p>
         <ApplyButton onClick={() => setApplyOpen(true)} className="mt-6" />
