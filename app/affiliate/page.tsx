@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AffiliateApplyModal from "@/components/AffiliateApplyModal";
 
-const PER_REFERRAL = 15;
 const MAX_REFERRALS = 500;
 const MILESTONES = [
   { count: 100, reward: 1000 },
@@ -14,6 +13,19 @@ const MILESTONES = [
   { count: 400, reward: 7000 },
   { count: 500, reward: 10000 },
 ];
+
+// Interpolate between milestones so the total matches each milestone's reward exactly
+function earningsFor(referrals: number) {
+  let prev = { count: 0, reward: 0 };
+  for (const m of MILESTONES) {
+    if (referrals <= m.count) {
+      const t = (referrals - prev.count) / (m.count - prev.count);
+      return Math.round(prev.reward + t * (m.reward - prev.reward));
+    }
+    prev = m;
+  }
+  return prev.reward;
+}
 
 const faqs = [
   {
@@ -172,7 +184,7 @@ export default function AffiliatePage() {
   const [referrals, setReferrals] = useState(56);
   const [applyOpen, setApplyOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const earnings = referrals * PER_REFERRAL;
+  const earnings = earningsFor(referrals);
   const pct = (referrals / MAX_REFERRALS) * 100;
 
   return (
