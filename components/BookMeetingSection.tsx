@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export default function BookMeetingSection() {
   return (
@@ -17,8 +16,8 @@ export default function BookMeetingSection() {
             <p className="text-[16px] w-full lg:w-125 lg:text-[18px] leading-relaxed mb-6 sm:mb-8 lg:mb-10" style={{ color: "#E2E8F0" }}>
               Get a personalized breakdown of what's working, what's not, and how AI can unlock smarter growth for your brand.
             </p>
-            <Link
-              href="/contact-us"
+            <a
+              href="https://app.flyrinzo.com"
               className="inline-flex items-center justify-center font-bold text-sm sm:text-base px-8 sm:px-12 py-3 sm:py-4 rounded-2xl border-2 transition-all hover:scale-105 w-full sm:w-auto"
               style={{
                 borderColor: "#FBBF24",
@@ -27,7 +26,7 @@ export default function BookMeetingSection() {
               }}
             >
               Get Free Insights
-            </Link>
+            </a>
           </div>
 
           {/* Right: Dashboard illustration */}
