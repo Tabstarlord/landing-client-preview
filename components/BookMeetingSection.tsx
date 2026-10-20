@@ -14,7 +14,7 @@ export default function BookMeetingSection() {
               <span style={{ color: "#FBBF24" }}>Get Free Insights</span>
             </h2>
             <p className="text-[16px] w-full lg:w-125 lg:text-[18px] leading-relaxed mb-6 sm:mb-8 lg:mb-10" style={{ color: "#E2E8F0" }}>
-              Get a personalized breakdown of what's working, what's not, and how AI can unlock smarter growth for your brand.
+              Get a personalized breakdown of what&apos;s working, what&apos;s not, and how AI can unlock smarter growth for your brand.
             </p>
             <a
               href="https://app.flyrinzo.com"
