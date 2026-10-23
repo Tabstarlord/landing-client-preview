@@ -297,8 +297,8 @@ export default function AffiliatePage() {
             <p className="text-xs text-gray-700 mt-1">+ commission</p>
             <hr className="w-full border-yellow-100 my-4" />
             <p className="text-[11px] text-gray-500 leading-snug">
-              Based on {referrals} referrals/mo on Growth plan. As your qualified Flyrinzo customer base grows,
-              so can your rewards.
+              Based on a milestone of 500 qualified user referrals, PLUS an additional commission for each
+              referred user at the mutually agreed rate.
             </p>
           </div>
         </div>
