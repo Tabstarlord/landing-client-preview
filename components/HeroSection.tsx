@@ -58,7 +58,7 @@ export default function HeroSection() {
             Small <span className="text-amber-400">Business</span> Growth
           </h1>
 
-          <h1 className="hidden px-2 font-bold text-white sm:block sm:text-[40px] sm:leading-[1.1] lg:text-[56px] lg:text-[#000000]">
+          <h1 className="hidden font-bold text-white sm:block sm:text-[40px] sm:leading-[1.1] lg:text-[56px] lg:text-[#000000]">
             Flyrinzo AI
             <br />
             For Small <span className="text-amber-400">Business</span> Growth

@@ -110,10 +110,15 @@ body {
 }
 
 .section-progress-rail {
-  position: relative;
-  height: 9px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  z-index: 3;
+  overflow: visible;
   border-top: 1px solid #e5e7eb;
-  background: rgba(255, 255, 255, 0.96);
+  background: transparent;
 }
 
 .section-progress-rail__line {
@@ -137,8 +142,8 @@ body {
   z-index: 1;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  height: 100%;
+  align-items: center;
+  height: 1px;
   padding: 0 9.5%;
 }
 
@@ -148,7 +153,8 @@ body {
   justify-content: center;
   width: 8px;
   height: 8px;
-  margin-top: -4px;
+  margin-top: 0;
+  transform: translateY(-50%);
   border: 1px solid var(--section-color);
   border-radius: 999px;
   background: #ffffff;
@@ -174,24 +180,23 @@ body {
   }
 }
 
-.section-progress-vehicle {
+.section-progress-logo-marker {
   position: absolute;
   z-index: 2;
-  top: -8px;
-  /* The dots are 8px wide, so their centers sit 4px inside the track padding. */
-  left: calc(var(--vehicle-position) + 4px);
-  width: 25px;
-  height: 11px;
-  transform: translateX(-50%);
+  top: 50%;
+  left: var(--vehicle-position);
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
   transition: left 700ms cubic-bezier(0.22, 1, 0.36, 1);
   filter:
     drop-shadow(0 0 2px rgba(139, 92, 246, 0.95))
     drop-shadow(0 0 5px rgba(167, 139, 250, 0.72))
     drop-shadow(0 1px 3px rgba(107, 33, 168, 0.35));
-  animation: section-progress-vehicle-glow 1.8s ease-in-out infinite;
+  animation: section-progress-logo-glow 1.8s ease-in-out infinite;
 }
 
-@keyframes section-progress-vehicle-glow {
+@keyframes section-progress-logo-glow {
   0%,
   100% {
     filter:
@@ -208,60 +213,18 @@ body {
   }
 }
 
-.section-progress-vehicle__body {
-  position: absolute;
-  left: 4px;
-  top: 3px;
-  width: 16px;
-  height: 6px;
-  border: 1px solid #4f46e5;
-  border-radius: 2px 5px 3px 2px;
-  background: linear-gradient(180deg, #ffffff 0 35%, #c4b5fd 36% 100%);
-}
-
-.section-progress-vehicle__body::after {
-  content: "";
-  position: absolute;
-  right: -5px;
-  top: 1px;
-  width: 5px;
-  height: 4px;
-  border-radius: 0 3px 3px 0;
-  background: #8b5cf6;
-}
-
-.section-progress-vehicle__beam {
-  position: absolute;
-  left: -9px;
-  top: 4px;
-  width: 12px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #c4b5fd);
-  transform: skewX(-25deg);
-  opacity: 0.9;
-  filter: blur(0.5px) drop-shadow(0 0 3px rgba(196, 181, 253, 0.9));
-}
-
-.section-progress-vehicle__wheel {
-  position: absolute;
-  bottom: 0;
-  width: 4px;
-  height: 4px;
-  border: 1px solid #312e81;
-  border-radius: 50%;
-  background: #ffffff;
-}
-
-.section-progress-vehicle__wheel--back {
-  left: 6px;
-}
-
-.section-progress-vehicle__wheel--front {
-  left: 17px;
+.section-progress-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 @media (max-width: 767px) {
   .section-progress-rail__dots {
     padding: 0 7%;
+  }
+
+  .section-progress-logo-marker {
+    left: calc(7% + (var(--vehicle-position) - 9.5%) * 1.034);
   }
 }

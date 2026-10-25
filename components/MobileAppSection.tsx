@@ -46,9 +46,9 @@ function IconCard({ type, className }: { type: "analytics" | "ai" | "gallery" | 
 
 export default function MobileAppSection() {
   return (
-    <section id="mobile-app" className="relative overflow-hidden bg-[#fffdf8] px-2 py-8 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+    <section id="mobile-app" className="relative overflow-hidden bg-[#fffdf8] px-2 py-3 sm:px-6 sm:py-4 xl:px-8 xl:py-3">
       <div className="pointer-events-none absolute inset-0 opacity-50 [background-image:linear-gradient(135deg,transparent_0%,transparent_47%,rgba(245,190,40,.07)_47.2%,transparent_47.5%),linear-gradient(45deg,transparent_0%,transparent_68%,rgba(245,190,40,.06)_68.2%,transparent_68.5%)]" />
-      <div className="relative mx-auto max-w-[1540px] overflow-hidden bg-[radial-gradient(circle_at_82%_45%,rgba(255,224,87,.18),transparent_28%),linear-gradient(110deg,#fffefb,#fffdf5)] px-5 py-8 shadow-[0_10px_40px_rgba(245,184,20,.08)] sm:px-10 sm:py-10 md:px-14 md:py-14 lg:px-16 lg:py-16">
+      <div className="relative mx-auto max-w-[1800px] overflow-hidden bg-[radial-gradient(circle_at_82%_45%,rgba(255,224,87,.18),transparent_28%),linear-gradient(110deg,#fffefb,#fffdf5)] px-5 py-5 shadow-[0_10px_40px_rgba(245,184,20,.08)] sm:px-10 sm:py-6 md:px-12 md:py-6 xl:h-[520px] xl:px-14 xl:py-10">
         <div className="pointer-events-none absolute left-[22px] right-[22px] top-0 h-[2px] bg-[#f6cc51] sm:left-[38px] sm:right-[38px]" />
         <div className="pointer-events-none absolute bottom-0 left-[22px] right-[22px] h-[2px] bg-[#f6cc51] sm:left-[38px] sm:right-[38px]" />
         <div className="pointer-events-none absolute bottom-[22px] left-0 top-[22px] w-[2px] bg-[#f6cc51] sm:bottom-[38px] sm:top-[38px]" />
@@ -61,12 +61,13 @@ export default function MobileAppSection() {
         <div className="pointer-events-none absolute bottom-[18px] left-[16px] right-[16px] h-px bg-[#f8dd89] sm:bottom-[26px] sm:left-[25px] sm:right-[25px]" />
         <div className="pointer-events-none absolute bottom-[16px] left-[18px] top-[16px] w-px bg-[#f8dd89] sm:bottom-[25px] sm:left-[26px] sm:top-[25px]" />
         <div className="pointer-events-none absolute bottom-[16px] right-[18px] top-[16px] w-px bg-[#f8dd89] sm:bottom-[25px] sm:right-[26px] sm:top-[25px]" />
-        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(420px,.88fr)] lg:gap-4">
-          <div className="max-w-[800px]">
-            <p className="mb-5 flex items-center gap-3 text-xs font-medium uppercase tracking-[.08em] text-[#65666d] sm:text-base">
+        <div className="relative z-10 grid items-center gap-5 xl:h-full xl:grid-cols-[minmax(0,1.12fr)_minmax(420px,.88fr)] xl:gap-3">
+          <div className="mx-auto w-full max-w-[800px] text-center xl:mx-0 xl:text-left">
+            <p className="mb-4 mt-2 flex items-center justify-center gap-3 text-xs font-medium uppercase tracking-[.08em] text-[#65666d] sm:text-base xl:justify-start">
               <span className="h-3.5 w-3.5 rounded-full animate-pulse bg-[#f5b800] shadow-[0_0_0_5px_rgba(245,184,0,.12)]" />
-              Your business growth journey starts here</p>
-            <h2 className="max-w-[700px] text-center lg:text-left text-[clamp(2.25rem,4.5vw,4.5rem)] font-extrabold leading-[.99] tracking-[-.055em] text-[#080b13]">You&apos;re Ready<br className="hidden lg:block" /> <span className="bg-gradient-to-r from-[#f2a900] to-[#f5c91f] bg-clip-text text-transparent">to Grow.</span>
+              Your business growth journey starts here
+            </p>
+            <h2 className="mx-auto max-w-[700px] text-center text-[clamp(2.25rem,4.5vw,4.5rem)] font-extrabold leading-[.99] tracking-[-.055em] text-[#080b13] xl:mx-0 xl:text-left">You&apos;re Ready<br className="hidden xl:block" /> <span className="bg-gradient-to-r from-[#f2a900] to-[#f5c91f] bg-clip-text text-transparent">to Grow.</span>
             </h2>
 
             {/* For Mobile Only */}
@@ -86,19 +87,19 @@ export default function MobileAppSection() {
               )}
             </div>
 
-            <div className="relative mt-10 hidden border-t border-[#efc72c] pt-7 sm:mt-12 sm:grid sm:grid-cols-3 sm:gap-6 lg:mt-14 lg:gap-5">
+            <div className="relative mt-5 hidden border-t border-[#efc72c] pt-4 text-center sm:mt-6 sm:grid sm:grid-cols-3 sm:gap-5 xl:mt-6 xl:gap-4 xl:text-left">
               {steps.map((step) => 
                 <div key={step.number} className="relative min-w-0">
-                  <span className="absolute -top-[39px] left-0 h-5 w-5 rounded-full border-[3px] border-[#f7c400] bg-white shadow-[0_0_0_5px_rgba(255,214,41,.18)]" />
-                  <p className="w-5 text-center text-xl font-semibold" style={{ color: step.color }}>{step.number}</p>
+                  <span className="absolute -top-[30px] left-1/2 h-5 w-5 -translate-x-1/2 rounded-full border-[3px] border-[#f7c400] bg-white shadow-[0_0_0_5px_rgba(255,214,41,.18)] xl:left-0 xl:translate-x-0" />
+                  <p className="mx-auto w-5 text-center text-xl font-semibold xl:mx-0" style={{ color: step.color }}>{step.number}</p>
                   <h3 className="mt-1 text-lg font-bold text-[#11131a]">{step.title}</h3>
-                  <p className="mt-2 max-w-[210px] text-sm leading-[1.4] text-[#65666d] sm:text-base">{step.body}</p>
+                  <p className="mx-auto mt-2 max-w-[210px] text-sm leading-[1.4] text-[#65666d] sm:text-base xl:mx-0">{step.body}</p>
                 </div>
               )}
             </div>
 
-            <div className="mt-11 flex w-full flex-wrap items-center justify-center gap-3 px-3 sm:mt-14 lg:gap-2 xl:flex-nowrap xl:justify-start">
-              <div className="flex w-full flex-wrap items-center justify-center gap-3 sm:w-auto sm:flex-nowrap lg:flex-nowrap">
+            <div className="mt-5 flex w-full flex-wrap items-center justify-center gap-3 px-3 sm:mt-6 xl:gap-2 xl:flex-nowrap xl:justify-start">
+              <div className="flex w-full flex-wrap items-center justify-center gap-3 sm:w-auto sm:flex-nowrap">
                 <GooglePlayBadge />
                 <AppStoreBadge />
               </div>
@@ -106,7 +107,7 @@ export default function MobileAppSection() {
             </div>
           </div>
 
-          <div className="relative flex min-h-[285px] items-end justify-center overflow-hidden sm:min-h-[360px] lg:w-[95%] lg:justify-self-end xl:w-full xl:min-h-[590px]">
+          <div className="relative flex min-h-[200px] items-end justify-center overflow-hidden sm:min-h-[250px] xl:h-full xl:w-[95%] xl:justify-self-end xl:w-full xl:min-h-0">
             <div className="absolute bottom-[4%] left-1/2 h-[270px] w-[270px] -translate-x-1/2 rounded-full bg-[#ffe16a]/35 blur-3xl sm:h-[390px] sm:w-[390px]" />
             <div className="pointer-events-none absolute bottom-[2%] left-1/2 h-[330px] w-[330px] -translate-x-1/2 rounded-full border border-[#f3c934]/25 sm:h-[470px] sm:w-[470px]" />
             <div className="pointer-events-none absolute bottom-[8%] left-1/2 h-[260px] w-[440px] -translate-x-1/2 rounded-[50%] border border-[#f3c934]/25 sm:h-[370px] sm:w-[620px]" />
@@ -120,7 +121,7 @@ export default function MobileAppSection() {
             <IconCard type="gallery" className="left-[2%] top-[35%] -rotate-6" />
             <IconCard type="analytics" className="right-[0%] top-[48%] rotate-6" />
             <IconCard type="calendar" className="left-[12%] bottom-[19%] -rotate-6" />
-            <Image src="/Robot.png" alt="Flyrinzo robot assistant" width={1024} height={1536} priority className="relative z-10 h-auto w-[min(92%,360px)] object-contain drop-shadow-[0_18px_18px_rgba(199,142,0,.22)] sm:w-[min(82%,520px)]" />
+            <Image src="/Robot.png" alt="Flyrinzo robot assistant" width={1024} height={1536} priority className="relative z-10 h-auto w-[min(92%,260px)] object-contain drop-shadow-[0_18px_18px_rgba(199,142,0,.22)] sm:w-[min(82%,280px)]" />
           </div>
         </div>
       </div>

@@ -51,6 +51,17 @@ export default function NewsletterSection() {
           {status === "submitting" ? "Subscribing…" : "Subscribe"}
         </button>
       </form>
+      <p className="mt-6 text-xs leading-relaxed" style={{ color: "#6F6C90" }}>
+                  By submitting this form you agree to Flyrinzo&apos;s{" "}
+                  <a href="/terms" className="hover:underline">
+                    terms of use
+                  </a>{" "}
+                  and user{" "}
+                  <a href="/privacy" className="hover:underline">
+                    privacy Policy
+                  </a>
+                  .
+                </p>
       {status === "success" && (
         <p className="text-xs text-green-600 mt-2">Thanks for subscribing!</p>
       )}

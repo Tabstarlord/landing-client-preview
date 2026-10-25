@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type CSSProperties } from "react";
+import Image from "next/image";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -76,10 +77,12 @@ export default function Navbar() {
     let animationFrame = 0;
 
     const updateVehiclePosition = () => {
-      // Use the section's actual page position so the car lands exactly on
-      // each dot when that section reaches the top of the scroll viewport.
-      const markerY = window.scrollY;
-      const sectionTops = sections.map((section) => section.offsetTop);
+      // Map the page scroll range across the dots, so progress continues
+      // smoothly through the last section and reaches the final marker at the bottom.
+      const markerY = window.scrollY + window.innerHeight * 0.45;
+      const sectionTops = sections.map(
+        (section) => section.getBoundingClientRect().top + window.scrollY,
+      );
 
       if (markerY <= sectionTops[0]) {
         setVehiclePosition(sectionPositions[0]);
@@ -87,16 +90,18 @@ export default function Navbar() {
       }
 
       const lastIndex = sectionTops.length - 1;
-      if (markerY >= sectionTops[lastIndex]) {
+      const pageEnd = document.documentElement.scrollHeight;
+      if (markerY >= pageEnd - window.innerHeight * 0.5) {
         setVehiclePosition(sectionPositions[lastIndex]);
         return;
       }
 
       const nextIndex = sectionTops.findIndex((top) => top > markerY);
       const currentIndex = Math.max(0, nextIndex - 1);
-      const sectionProgress =
-        (markerY - sectionTops[currentIndex]) /
-        (sectionTops[nextIndex] - sectionTops[currentIndex]);
+      const sectionSpan = sectionTops[nextIndex] - sectionTops[currentIndex];
+      const sectionProgress = sectionSpan > 0
+        ? (markerY - sectionTops[currentIndex]) / sectionSpan
+        : 0;
       const position =
         sectionPositions[currentIndex] +
         (sectionPositions[nextIndex] - sectionPositions[currentIndex]) *
@@ -223,17 +228,20 @@ export default function Navbar() {
         <div className="section-progress-rail" aria-hidden="true">
           <div className="section-progress-rail__line" aria-hidden="true" />
           <div
-            className="section-progress-vehicle"
+            className="section-progress-logo-marker"
             style={
               {
                 "--vehicle-position": `${vehiclePosition}%`,
               } as CSSProperties
             }
           >
-            <span className="section-progress-vehicle__beam" />
-            <span className="section-progress-vehicle__body" />
-            <span className="section-progress-vehicle__wheel section-progress-vehicle__wheel--front" />
-            <span className="section-progress-vehicle__wheel section-progress-vehicle__wheel--back" />
+            <Image
+              src="/logo.png"
+              alt=""
+              width={24}
+              height={24}
+              className="section-progress-logo"
+            />
           </div>
           <div className="section-progress-rail__dots">
             {sectionDots.map((section) => {
