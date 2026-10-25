@@ -34,8 +34,7 @@ export default function Footer() {
               <FlyrinzoLogo />
             </div>
             <p className="text-gray-500 text-sm max-w-sm leading-relaxed text-justify mb-3">
-              We&apos;re not just building tools we&apos;re creating a smarter way for small businesses
-              to grow, connect, and succeed. Join us, and let&apos;s create the future together.
+              Flyrinzo helps small businesses create smarter, market better, and grow faster. From content and scheduling to insights ans connection, we&apos;re building the tools that move your business foward.
             </p>
             <div className="flex flex-col lg:flex-row items-start gap-x-6 gap-y-2">
               {navLinks.map((link) => (

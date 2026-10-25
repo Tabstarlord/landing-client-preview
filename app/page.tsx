@@ -43,7 +43,6 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <LogosBar />
         <FeaturesSection />
         <WhyWeBuiltSection />
         <HowItWorksSection />

@@ -1,10 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { usePricing } from "@/components/pricing/usePricing";
+
+const angularButtonStyle = {
+  "--angular-border": "#FACC15",
+  "--angular-fill": "#FFFFFF",
+  "--angular-hover-fill": "#FEFCE8",
+  clipPath:
+    "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))",
+} as const;
+
+const angularCtaStyle = {
+  "--angular-border": "#EAB308",
+  "--angular-fill": "#FACC15",
+  "--angular-hover-fill": "#EAB308",
+  clipPath: angularButtonStyle.clipPath,
+} as const;
+
+
 
 // Anchors are rooted at "/" so they also work from other pages.
 const navLinks = [
@@ -16,54 +33,163 @@ const navLinks = [
   { label: "Pricing", href: "/pricing" },
 ];
 
+const navAccentColors = [
+  "#FBBF24", // amber
+  "#EAB308", // yellow
+  "#F59E0B", // orange
+  "#8B5CF6", // violet
+  "#6366F1", // indigo
+  "#4F46E5", // blue-violet
+];
+
+const sectionDots = [
+  { id: "hero", label: "Home", color: "#FBBF24" },
+  { id: "solutions", label: "Solutions", color: "#F97316" },
+  { id: "why", label: "Why Flyrinzo", color: "#10B981" },
+  { id: "how", label: "How Flyrinzo works", color: "#8B5CF6" },
+  { id: "mobile-app", label: "Mobile app", color: "#6366F1" },
+];
+
+const sectionPositions = [9.5, 29.75, 50, 70.25, 90.5];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [vehiclePosition, setVehiclePosition] = useState(sectionPositions[0]);
   const { pricing } = usePricing();
   const cta = pricing ? `Start for ${pricing.intro.formatted}` : "Get Started";
   const pathname = usePathname().replace(/\/$/, "") || "/";
+  const isLandingPage = pathname === "/";
   const links = navLinks.map((link) => ({
     ...link,
     active: link.href === pathname,
   }));
 
+  useEffect(() => {
+    if (!isLandingPage) return;
+
+    const sections = sectionDots
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    if (!sections.length) return;
+
+    let animationFrame = 0;
+
+    const updateVehiclePosition = () => {
+      // Use the section's actual page position so the car lands exactly on
+      // each dot when that section reaches the top of the scroll viewport.
+      const markerY = window.scrollY;
+      const sectionTops = sections.map((section) => section.offsetTop);
+
+      if (markerY <= sectionTops[0]) {
+        setVehiclePosition(sectionPositions[0]);
+        return;
+      }
+
+      const lastIndex = sectionTops.length - 1;
+      if (markerY >= sectionTops[lastIndex]) {
+        setVehiclePosition(sectionPositions[lastIndex]);
+        return;
+      }
+
+      const nextIndex = sectionTops.findIndex((top) => top > markerY);
+      const currentIndex = Math.max(0, nextIndex - 1);
+      const sectionProgress =
+        (markerY - sectionTops[currentIndex]) /
+        (sectionTops[nextIndex] - sectionTops[currentIndex]);
+      const position =
+        sectionPositions[currentIndex] +
+        (sectionPositions[nextIndex] - sectionPositions[currentIndex]) *
+          Math.min(1, Math.max(0, sectionProgress));
+
+      setVehiclePosition(position);
+    };
+
+    const handleScroll = () => {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(updateVehiclePosition);
+    };
+
+    updateVehiclePosition();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [isLandingPage]);
+
   return (
     <header className="sticky top-0 z-50 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16">
+        <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center h-20 max-[1180px]:h-auto max-[1180px]:grid-rows-[64px_auto] max-[1180px]:gap-y-2">
           {/* Logo */}
           <FlyrinzoLogo className="flex-shrink-0" />
 
           {/* Desktop nav — centered */}
-          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
-            {links.map((item) => (
-              <a
+          <nav className="hidden md:flex items-center gap-4 justify-self-center max-[1180px]:col-span-3 max-[1180px]:row-start-2 max-[1180px]:pb-3">
+            {links.map((item, index) => (
+              <div
                 key={item.label}
-                href={item.href}
-                className={`text-sm transition-colors ${
-                  item.active
-                    ? "text-gray-900 font-medium"
-                    : "text-gray-500 hover:text-gray-800"
-                }`}
+                className="nav-link-item flex items-center gap-2"
               >
-                {item.label}
-              </a>
+                <span
+                  className={`nav-link-separator${
+                    item.active ? " nav-link-separator--active" : ""
+                  }`}
+                  style={
+                    {
+                      "--nav-accent": item.active
+                        ? "#111827"
+                        : navAccentColors[index],
+                    } as CSSProperties
+                  }
+                >
+                  {index > 0 && <span className="nav-link-separator__line" />}
+                  <svg
+                    className="nav-link-separator__hex"
+                    viewBox="0 0 10 12"
+                    aria-hidden="true"
+                  >
+                    <polygon points="5,0.75 9.25,3.25 9.25,8.75 5,11.25 0.75,8.75 0.75,3.25" />
+                  </svg>
+                </span>
+
+                <a
+                  href={item.href}
+                  style={{
+                    textShadow:
+                      "0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 3px rgba(17, 24, 39, 0.12)",
+                  }}
+                  className={`nav-link-label text-sm transition-colors ${
+                    item.active
+                      ? "text-gray-900 font-medium"
+                      : "text-gray-500 hover:text-gray-800"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </div>
             ))}
           </nav>
 
-
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 justify-self-end max-[1180px]:col-start-3 max-[1180px]:row-start-1">
             {/* CTA */}
             <a
               href="https://app.flyrinzo.com"
-              className="hidden md:inline-flex flex-shrink-0 bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
+              style={angularButtonStyle}
+              className="navbar-angular-button hidden md:inline-flex flex-shrink-0 bg-white  hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
             >
-              Login
+              <span>Login</span>
             </a>
             <Link
               href="/contact-us"
-              className="hidden md:inline-flex flex-shrink-0 bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
+              style={angularCtaStyle}
+              className="navbar-angular-button hidden md:inline-flex flex-shrink-0  bg-yellow-400 hover:bg-yellow-500 text-white font-semibold text-sm px-5 py-2.5 transition-colors"
             >
-              {cta}
+              <span>{cta}</span>
             </Link>
 
             {/* Hamburger — mobile only */}
@@ -92,6 +218,39 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Section progress rail — landing page only */}
+      {isLandingPage && (
+        <div className="section-progress-rail" aria-hidden="true">
+          <div className="section-progress-rail__line" aria-hidden="true" />
+          <div
+            className="section-progress-vehicle"
+            style={
+              {
+                "--vehicle-position": `${vehiclePosition}%`,
+              } as CSSProperties
+            }
+          >
+            <span className="section-progress-vehicle__beam" />
+            <span className="section-progress-vehicle__body" />
+            <span className="section-progress-vehicle__wheel section-progress-vehicle__wheel--front" />
+            <span className="section-progress-vehicle__wheel section-progress-vehicle__wheel--back" />
+          </div>
+          <div className="section-progress-rail__dots">
+            {sectionDots.map((section) => {
+              return (
+                <span
+                  key={section.id}
+                  className="section-progress-dot"
+                  style={{ "--section-color": section.color } as CSSProperties}
+                >
+                  <span className="section-progress-dot__core" />
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Mobile menu */}
       <div
         className={`md:hidden absolute top-full inset-x-0 bg-white border-t border-gray-100 shadow-lg px-6 py-4 flex flex-col gap-4 origin-top transition-all duration-300 ease-in-out ${
@@ -117,16 +276,18 @@ export default function Navbar() {
         <a
           href="https://app.flyrinzo.com/login"
           onClick={() => setOpen(false)}
-          className="text-center bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
+          style={angularButtonStyle}
+          className="navbar-angular-button text-center bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
         >
-          Login
+          <span>Login</span>
         </a>
         <Link
           href="/contact-us"
           onClick={() => setOpen(false)}
-          className="text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
+          style={angularCtaStyle}
+          className="navbar-angular-button text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"
         >
-          {cta}
+          <span>{cta}</span>
         </Link>
       </div>
     </header>
