@@ -51,11 +51,9 @@ const sectionDots = [
   { id: "mobile-app", label: "Mobile app", color: "#6366F1" },
 ];
 
-const sectionPositions = [9.5, 29.75, 50, 70.25, 90.5];
-
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [vehiclePosition, setVehiclePosition] = useState(sectionPositions[0]);
+  const [markerX, setMarkerX] = useState(0);
   const { pricing } = usePricing();
   const cta = pricing ? `Start for ${pricing.intro.formatted}` : "Get Started";
   const pathname = usePathname().replace(/\/$/, "") || "/";
@@ -77,37 +75,53 @@ export default function Navbar() {
     let animationFrame = 0;
 
     const updateVehiclePosition = () => {
-      // Map the page scroll range across the dots, so progress continues
-      // smoothly through the last section and reaches the final marker at the bottom.
-      const markerY = window.scrollY + window.innerHeight * 0.45;
+      const marker = document.querySelector<HTMLElement>(".section-progress-logo-marker");
+      const dots = Array.from(
+        document.querySelectorAll<HTMLElement>(".section-progress-dot"),
+      );
+      if (!marker || dots.length < 2) return;
+
+      const rail = marker.parentElement?.getBoundingClientRect();
+      if (!rail) return;
+
+      const dotCenters = dots.map((dot) => {
+        const rect = dot.getBoundingClientRect();
+        return rect.left + rect.width / 2 - rail.left;
+      });
       const sectionTops = sections.map(
         (section) => section.getBoundingClientRect().top + window.scrollY,
       );
+      const header = marker.closest(".navbar-shell");
+      const headerHeight = header?.getBoundingClientRect().height ?? 0;
+      const lastIndex = Math.min(sectionTops.length, dotCenters.length) - 1;
+      const sectionScrollPoints = sectionTops.map((top, index) =>
+        index === 0 ? 0 : Math.max(0, top - headerHeight),
+      );
+      const scrollY = window.scrollY;
 
-      if (markerY <= sectionTops[0]) {
-        setVehiclePosition(sectionPositions[0]);
+      if (scrollY <= sectionScrollPoints[0]) {
+        setMarkerX(dotCenters[0]);
         return;
       }
 
-      const lastIndex = sectionTops.length - 1;
-      const pageEnd = document.documentElement.scrollHeight;
-      if (markerY >= pageEnd - window.innerHeight * 0.5) {
-        setVehiclePosition(sectionPositions[lastIndex]);
+      let nextIndex = sectionScrollPoints.findIndex(
+        (point, index) => index > 0 && point > scrollY,
+      );
+      if (nextIndex < 0 || nextIndex > lastIndex) {
+        setMarkerX(dotCenters[lastIndex]);
         return;
       }
 
-      const nextIndex = sectionTops.findIndex((top) => top > markerY);
-      const currentIndex = Math.max(0, nextIndex - 1);
-      const sectionSpan = sectionTops[nextIndex] - sectionTops[currentIndex];
-      const sectionProgress = sectionSpan > 0
-        ? (markerY - sectionTops[currentIndex]) / sectionSpan
-        : 0;
-      const position =
-        sectionPositions[currentIndex] +
-        (sectionPositions[nextIndex] - sectionPositions[currentIndex]) *
-          Math.min(1, Math.max(0, sectionProgress));
-
-      setVehiclePosition(position);
+      const currentIndex = nextIndex - 1;
+      const scrollSpan =
+        sectionScrollPoints[nextIndex] - sectionScrollPoints[currentIndex];
+      const progress = scrollSpan > 0
+        ? Math.min(1, Math.max(0, (scrollY - sectionScrollPoints[currentIndex]) / scrollSpan))
+        : 1;
+      setMarkerX(
+        dotCenters[currentIndex] +
+          (dotCenters[nextIndex] - dotCenters[currentIndex]) * progress,
+      );
     };
 
     const handleScroll = () => {
@@ -127,7 +141,7 @@ export default function Navbar() {
   }, [isLandingPage]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="navbar-shell sticky top-0 z-50 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center h-20 max-[1180px]:h-auto max-[1180px]:grid-rows-[64px_auto] max-[1180px]:gap-y-2">
           {/* Logo */}
@@ -231,7 +245,7 @@ export default function Navbar() {
             className="section-progress-logo-marker"
             style={
               {
-                "--vehicle-position": `${vehiclePosition}%`,
+                left: `${markerX}px`,
               } as CSSProperties
             }
           >
