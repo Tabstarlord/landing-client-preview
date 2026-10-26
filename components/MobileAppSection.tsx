@@ -48,7 +48,7 @@ export default function MobileAppSection() {
   return (
     <section id="mobile-app" className="relative overflow-hidden bg-[#fffdf8] px-2 py-3 sm:px-6 sm:py-4 xl:px-8 xl:py-3">
       <div className="pointer-events-none absolute inset-0 opacity-50 [background-image:linear-gradient(135deg,transparent_0%,transparent_47%,rgba(245,190,40,.07)_47.2%,transparent_47.5%),linear-gradient(45deg,transparent_0%,transparent_68%,rgba(245,190,40,.06)_68.2%,transparent_68.5%)]" />
-      <div className="relative mx-auto max-w-[1800px] overflow-hidden bg-[radial-gradient(circle_at_82%_45%,rgba(255,224,87,.18),transparent_28%),linear-gradient(110deg,#fffefb,#fffdf5)] px-5 py-5 shadow-[0_10px_40px_rgba(245,184,20,.08)] sm:px-10 sm:py-6 md:px-12 md:py-6 xl:h-[460px] xl:px-12 xl:py-7">
+      <div className="relative mx-auto max-w-[1800px] overflow-hidden bg-[radial-gradient(circle_at_82%_45%,rgba(255,224,87,.18),transparent_28%),linear-gradient(110deg,#fffefb,#fffdf5)] px-5 py-5 shadow-[0_10px_40px_rgba(245,184,20,.08)] sm:px-10 sm:py-6 md:px-12 md:py-6 xl:h-[440px] xl:px-12 xl:py-7">
         <div className="pointer-events-none absolute left-[22px] right-[22px] top-0 h-[2px] bg-[#f6cc51] sm:left-[38px] sm:right-[38px]" />
         <div className="pointer-events-none absolute bottom-0 left-[22px] right-[22px] h-[2px] bg-[#f6cc51] sm:left-[38px] sm:right-[38px]" />
         <div className="pointer-events-none absolute bottom-[22px] left-0 top-[22px] w-[2px] bg-[#f6cc51] sm:bottom-[38px] sm:top-[38px]" />
@@ -121,7 +121,7 @@ export default function MobileAppSection() {
             <IconCard type="gallery" className="left-[2%] top-[35%] -rotate-6" />
             <IconCard type="analytics" className="right-[0%] top-[48%] rotate-6" />
             <IconCard type="calendar" className="left-[12%] bottom-[19%] -rotate-6" />
-            <Image src="/Robot.png" alt="Flyrinzo robot assistant" width={1024} height={1536} priority className="relative z-10 h-auto w-[min(92%,230px)] object-contain drop-shadow-[0_12px_14px_rgba(199,142,0,.22)] sm:w-[min(88%,260px)] xl:w-[min(96%,280px)]" />
+            <Image src="/Robot.png" alt="Flyrinzo robot assistant" width={1024} height={1536} priority className="relative z-10 translate-y-2 h-auto w-[min(92%,220px)] object-contain drop-shadow-[0_12px_14px_rgba(199,142,0,.22)] sm:w-[min(88%,250px)] xl:w-[min(96%,270px)]" />
           </div>
         </div>
       </div>
