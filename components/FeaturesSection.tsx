@@ -123,7 +123,7 @@ export default function FeaturesSection() {
         </div>
         <div className="grid items-center gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:gap-12">
           <div className="text-center lg:text-left">
-            <h2 className="mx-auto max-w-[640px] text-[26px] font-black uppercase leading-[1.2] tracking-[-0.045em] text-[#050505] sm:text-[40px] lg:mx-0 lg:text-[45px]">
+            <h2 className="mx-auto max-w-[640px] text-[26px] font-black uppercase leading-[1.2] tracking-[-0.045em] text-[#050505] sm:text-[35px] lg:mx-0 lg:text-[40px]">
               Everything you need to<br />
               <span className="text-[#f5a900]">manage right</span> in your<br />
               pocket.
@@ -144,8 +144,8 @@ export default function FeaturesSection() {
               </svg>
               {[["7", "Core marketing tools"], ["1,000+", "Templates"], ["1", "Powerful dashboard"]].map(([value, label], index) => (
                 <div key={label} className={`relative z-10 flex flex-col items-center justify-center text-center ${index > 0 ? "border-l border-[#f3c229]/60" : ""}`}>
-                  <strong className="text-4xl font-black tracking-[-0.06em] text-[#e99b00] sm:text-5xl lg:max-[1270px]:text-3xl">{value}</strong>
-                  <span className="mt-2 max-w-[130px] text-[10px] font-bold uppercase leading-4 tracking-[0.1em] text-[#3f4058] sm:text-xs lg:max-[1270px]:max-w-[110px] lg:max-[1270px]:text-[10px] lg:max-[1270px]:leading-3">{label}</span>
+                  <strong className="text-2xl font-black tracking-[-0.06em] text-[#e99b00] sm:text-4xl lg:max-[1270px]:text-3xl">{value}</strong>
+                  <span className="mt-2 max-w-[130px] text-[9px] font-bold uppercase leading-4 tracking-[0.1em] text-[#3f4058] sm:text-xs lg:max-[1270px]:max-w-[110px] lg:max-[1270px]:text-[10px] lg:max-[1270px]:leading-3">{label}</span>
                 </div>
               ))}
             </div>

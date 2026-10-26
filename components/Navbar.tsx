@@ -89,7 +89,10 @@ export default function Navbar() {
         return rect.left + rect.width / 2 - rail.left;
       });
       const sectionTops = sections.map(
-        (section) => section.getBoundingClientRect().top + window.scrollY,
+        (section) =>
+          section.getBoundingClientRect().top +
+          window.scrollY -
+          (document.querySelector<HTMLElement>(".navbar-shell")?.offsetHeight ?? 0),
       );
       const lastIndex = Math.min(sectionTops.length, dotCenters.length) - 1;
       // Native hash links align each section's top with the viewport top.
@@ -247,11 +250,12 @@ export default function Navbar() {
               } as CSSProperties
             }
           >
+            <span className="section-progress-rocket-flame" />
             <Image
-              src="/logo.png"
+              src="/Rocket.png"
               alt=""
-              width={24}
-              height={24}
+              width={38}
+              height={38}
               className="section-progress-logo"
             />
           </div>
