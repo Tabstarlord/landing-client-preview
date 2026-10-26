@@ -123,7 +123,7 @@ export default function FeaturesSection() {
         </div>
         <div className="grid items-center gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:gap-12">
           <div className="text-center lg:text-left">
-            <h2 className="mx-auto max-w-[640px] text-[26px] font-black uppercase leading-tight tracking-[-0.045em] text-[#050505] sm:text-[40px] lg:mx-0 lg:text-[47px]">
+            <h2 className="mx-auto max-w-[640px] text-[26px] font-black uppercase leading-[1.2] tracking-[-0.045em] text-[#050505] sm:text-[40px] lg:mx-0 lg:text-[45px]">
               Everything you need to<br />
               <span className="text-[#f5a900]">manage right</span> in your<br />
               pocket.

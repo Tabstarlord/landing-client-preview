@@ -91,12 +91,10 @@ export default function Navbar() {
       const sectionTops = sections.map(
         (section) => section.getBoundingClientRect().top + window.scrollY,
       );
-      const header = marker.closest(".navbar-shell");
-      const headerHeight = header?.getBoundingClientRect().height ?? 0;
       const lastIndex = Math.min(sectionTops.length, dotCenters.length) - 1;
-      const sectionScrollPoints = sectionTops.map((top, index) =>
-        index === 0 ? 0 : Math.max(0, top - headerHeight),
-      );
+      // Native hash links align each section's top with the viewport top.
+      // Use those same scroll positions so a clicked section lands on its dot.
+      const sectionScrollPoints = sectionTops;
       const scrollY = window.scrollY;
 
       if (scrollY <= sectionScrollPoints[0]) {

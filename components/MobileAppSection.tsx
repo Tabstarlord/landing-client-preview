@@ -63,7 +63,7 @@ export default function MobileAppSection() {
         <div className="pointer-events-none absolute bottom-[16px] right-[18px] top-[16px] w-px bg-[#f8dd89] sm:bottom-[25px] sm:right-[26px] sm:top-[25px]" />
         <div className="relative z-10 grid items-center gap-5 xl:h-full xl:grid-cols-[minmax(0,1.12fr)_minmax(420px,.88fr)] xl:gap-3">
           <div className="mx-auto w-full max-w-[800px] text-center xl:mx-0 xl:text-left">
-            <p className="mb-4 mt-2 flex items-center justify-center gap-3 text-xs font-medium uppercase tracking-[.08em] text-[#65666d] sm:text-base xl:justify-start">
+            <p className="mb-4 mt-1 flex items-center justify-center gap-3 text-xs font-medium uppercase tracking-[.08em] text-[#65666d] sm:text-base xl:justify-start">
               <span className="h-3.5 w-3.5 rounded-full animate-pulse bg-[#f5b800] shadow-[0_0_0_5px_rgba(245,184,0,.12)]" />
               Your business growth journey starts here
             </p>
