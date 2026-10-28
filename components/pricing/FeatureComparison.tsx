@@ -85,9 +85,29 @@ const plans = [
 function SocialIcons() {
   return (
     <span className="inline-flex items-center gap-0.5" aria-label="Instagram, Facebook and TikTok">
-      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6"><defs><linearGradient id="ig-gradient" x1="0" x2="1" y1="1" y2="0"><stop stopColor="#feda75"/><stop offset=".5" stopColor="#fa7e1e"/><stop offset="1" stopColor="#d62976"/></linearGradient></defs><rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-gradient)"/><rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="white" strokeWidth="2"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="white" strokeWidth="2"/><circle cx="17" cy="7" r="1.2" fill="white"/></svg>
-      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6"><circle cx="12" cy="12" r="12" fill="#1877f2"/><path fill="white" d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"/></svg>
-      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6"><rect width="24" height="24" rx="6" fill="#111"/><path fill="#25f4ee" d="M13 4h3c.1 2 1.2 3.2 3 3.5v3c-1.2 0-2.3-.4-3.1-1v5.2a5 5 0 1 1-5-5h.7v3.1a2 2 0 1 0 1.4 1.9z"/><path fill="#fe2c55" d="M12 3h3c.1 2 1.2 3.2 3 3.5v3c-1.2 0-2.3-.4-3.1-1v5.2a5 5 0 1 1-5-5h.7v3.1a2 2 0 1 0 1.4 1.9z"/><path fill="white" d="M12.5 4h2.7c.1 2 1.2 3.2 3 3.5v2.7c-1.1 0-2.1-.4-3-1v5.5a4.5 4.5 0 1 1-4.5-4.5v2.8a1.8 1.8 0 1 0 1.8 1.8z"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6">
+        <defs>
+          <linearGradient id="ig-gradient" x1="0" x2="1" y1="1"   y2="0">
+            <stop stopColor="#feda75"/>
+            <stop offset=".5" stopColor="#fa7e1e"/>
+            <stop offset="1" stopColor="#d62976"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-gradient)"/>
+        <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="white" strokeWidth="2"/>
+        <circle cx="12" cy="12" r="3.2" fill="none" stroke="white" strokeWidth="2"/>
+        <circle cx="17" cy="7" r="1.2" fill="white"/>
+      </svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6">
+        <circle cx="12" cy="12" r="12" fill="#1877f2"/>
+        <path fill="white" d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"/>
+      </svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6">
+        <rect width="24" height="24" rx="6" fill="#111"/>
+        <path fill="#25f4ee" d="M13 4h3c.1 2 1.2 3.2 3 3.5v3c-1.2 0-2.3-.4-3.1-1v5.2a5 5 0 1 1-5-5h.7v3.1a2 2 0 1 0 1.4 1.9z"/>
+        <path fill="#fe2c55" d="M12 3h3c.1 2 1.2 3.2 3 3.5v3c-1.2 0-2.3-.4-3.1-1v5.2a5 5 0 1 1-5-5h.7v3.1a2 2 0 1 0 1.4 1.9z"/>
+        <path fill="white" d="M12.5 4h2.7c.1 2 1.2 3.2 3 3.5v2.7c-1.1 0-2.1-.4-3-1v5.5a4.5 4.5 0 1 1-4.5-4.5v2.8a1.8 1.8 0 1 0 1.8 1.8z"/>
+      </svg>
     </span>
   );
 }
@@ -118,7 +138,7 @@ export default function FeatureComparison() {
               <col className="w-[18%]"/>
             </colgroup>
             <thead>
-              <tr className="h-[130px] border-b border-slate-200">
+              <tr className="h-[168px] border-b border-slate-200 md:h-[130px]">
                 <th className="px-6 text-xl font-bold text-gray-900">Features</th>
                 {plans.map(({ name, note, icon, popular }) => 
                   <th 
@@ -130,7 +150,7 @@ export default function FeatureComparison() {
                     Most Popular
                   </span>
                   }
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col items-center gap-2 pt-8 text-center md:flex-row md:gap-4 md:pt-0 md:text-left">
                     <Image 
                     src={icon} 
                     alt="" 
@@ -138,7 +158,7 @@ export default function FeatureComparison() {
                     height={68} 
                     className="h-16 w-16 shrink-0 object-contain"
                     />
-                    <span>
+                    <span className="min-w-0">
                       <span className="block text-lg font-bold leading-tight text-gray-900">{name}</span>
                       <span className="mt-1 block text-xs font-normal leading-5 text-gray-500">{note}</span>
                     </span>
@@ -165,18 +185,18 @@ export default function FeatureComparison() {
                       const FeatureIcon = feature.icon;
                       return (
                         <tr key={feature.label} className="h-[43px] border-b border-slate-200 last:border-b-0">
-                          <th scope="row" className="px-7 font-normal text-slate-600">
+                          <th scope="row" className="px-3 font-normal text-slate-600 md:px-7">
                             {feature.label === "Instagram, Facebook & TikTok" ? (
-                              <span className="mr-8 inline-block align-middle">
+                              <span className="mr-2 inline-block align-middle md:mr-3">
                                 <SocialIcons />
                               </span>
                             ) : (
                               <FeatureIcon
-                                className={`mr-8 inline h-6 w-6 align-middle ${feature.icon === Lightbulb ? "text-yellow-400" : "text-blue-600"}`}
+                                className={`mr-2 inline h-4 w-4 align-middle ${feature.icon === Lightbulb ? "text-yellow-400" : "text-blue-600"} md:mr-8 md:h-6 md:w-6`}
                                 strokeWidth={2.3}
                               />
                             )}
-                            <span className="align-middle">{feature.label}</span>
+                            {feature.label !== "Instagram, Facebook & TikTok" && <span className="whitespace-nowrap align-middle text-xs md:text-sm">{feature.label}</span>}
                           </th>
                           {feature.values.map((value, i) => (
                             <td
