@@ -112,7 +112,7 @@ export default function PricingPlans() {
                     aria-hidden="true"
                     width={73}
                     height={71}
-                    className="h-16 w-16 shrink-0 object-contain"
+                    className="h-12 w-12 shrink-0 object-contain"
                   />
 
                   <div>
@@ -139,7 +139,7 @@ export default function PricingPlans() {
                     aria-hidden="true"
                     width={120}
                     height={125}
-                    className={`absolute bottom-0 right-0 z-0 object-contain ${index === 0 ? "h-29.5 w-26.5" : index === 1 ? "h-28 w-22" : index === 2 ? "h-27 w-25.5" : "h-25 w-26.25"}`}
+                    className={`absolute bottom-0 right-0 z-0 object-contain ${index === 0 ? "h-23.5 w-21" : index === 1 ? "h-22 w-18" : index === 2 ? "h-21.5 w-20.5" : "h-20 w-21"}`}
                   />
                 </div>
                 <div className="mt-3 flex-1 border-t border-slate-100">
@@ -166,14 +166,14 @@ export default function PricingPlans() {
                     </div>
                   )}
                 </div>
+                {index === 0 && 
+                <p className="mt-1 text-center text-xs text-slate-600">No credit card required.</p>}
                 <Link 
                 href="/contact-us" 
-                className={`mt-2 block rounded-xl px-4 py-3 text-center text-lg font-bold ${index === 0 ? "bg-slate-100 text-slate-900" : index === 1 ? "bg-purple-100 text-slate-900" : popular ? "bg-yellow-400 text-slate-950" : "bg-blue-500 text-white"}`}
+                className={`mt-2 block rounded-xl px-4 py-3 text-center font-semibold ${index === 0 ? "bg-slate-100 text-slate-900" : index === 1 ? "bg-purple-100 text-slate-900" : popular ? "bg-yellow-400 text-slate-950" : "bg-blue-500 text-white"}`}
                 >
                   {["Start Free", "Choose Starter", "Get Growth", "Choose Scale"][index]}
                 </Link>
-                {index === 0 && 
-                <p className="mt-1 text-center text-xs text-slate-600">No credit card required.</p>}
               </article>
             );
           })}

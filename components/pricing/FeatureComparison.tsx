@@ -156,7 +156,7 @@ export default function FeatureComparison() {
                     alt="" 
                     width={72} 
                     height={68} 
-                    className="h-16 w-16 shrink-0 object-contain"
+                    className="h-12 w-12 shrink-0 object-contain"
                     />
                     <span className="min-w-0">
                       <span className="block text-lg font-bold leading-tight text-gray-900">{name}</span>
