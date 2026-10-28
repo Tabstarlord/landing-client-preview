@@ -19,7 +19,7 @@ export default function PricingCta() {
   const { pricing } = usePricing();
   const intro = pricing?.intro.formatted ?? "…";
   return (
-    <section className="pb-20">
+    <section id="pricing-cta" className="pb-20">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <div className="md:pt-[4.75cqw] [container-type:inline-size]">
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-[#FFCF4A] to-[#FFE08C] px-5 pb-[210px] pt-6 md:overflow-visible md:bg-none md:bg-[#FFC107] md:pb-0 md:pt-0 md:flex md:min-h-[11.8cqw] md:flex-col md:justify-center md:px-[2.4cqw] md:py-0">

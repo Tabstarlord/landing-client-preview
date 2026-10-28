@@ -3,7 +3,7 @@ import { WITHOUT_FLYRINZO, WITH_FLYRINZO } from "./pricing-data";
 
 export default function WhyChoose() {
   return (
-    <section className="pb-20">
+    <section id="pricing-why" className="pb-20">
       <div className="max-w-5xl mx-auto px-6 lg:px-12">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900">Why Businesses Choose Flyrinzo</h2>

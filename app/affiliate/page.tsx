@@ -193,7 +193,7 @@ export default function AffiliatePage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="text-center px-6 pt-16 pb-14 max-w-4xl mx-auto">
+      <section id="earn-hero" className="text-center px-6 pt-16 pb-14 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
           <span className="md:whitespace-nowrap">
             Help Small Businesses <span className="text-yellow-400">Grow</span>.
@@ -211,7 +211,7 @@ export default function AffiliatePage() {
       </section>
 
       {/* Steps */}
-      <section className="px-6 py-8 max-w-4xl mx-auto">
+      <section id="earn-steps" className="px-6 py-8 max-w-4xl mx-auto">
         <h2 className="text-center text-2xl md:text-3xl font-semibold text-gray-700 mb-10">Three Steps to Earning</h2>
         <div className="grid md:grid-cols-3 gap-10 text-center">
           {steps.map((s) => (
@@ -226,7 +226,7 @@ export default function AffiliatePage() {
       </section>
 
       {/* Calculator */}
-      <section className="px-6 pt-16 pb-8 max-w-4xl mx-auto">
+      <section id="earn-calculator" className="px-6 pt-16 pb-8 max-w-4xl mx-auto">
         <h2 className="text-center text-2xl md:text-3xl font-semibold text-gray-700">How Much Could You Earn?</h2>
         <p className="text-center text-base text-[#6F6C90] mt-3 leading-relaxed">
           Calculate Your Progress
@@ -310,7 +310,7 @@ export default function AffiliatePage() {
       </section>
 
       {/* Why promote */}
-      <section className="px-6 pt-20 pb-10 max-w-5xl mx-auto">
+      <section id="earn-benefits" className="px-6 pt-20 pb-10 max-w-5xl mx-auto">
         <h2 className="text-center text-2xl md:text-3xl font-semibold text-gray-700">Why Promote Flyrinzo</h2>
         <p className="text-center text-base text-[#6F6C90] mt-2">You Don&apos;t Need Thousands of Followers</p>
         <div className="mt-10 grid md:grid-cols-2 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100">
@@ -340,7 +340,7 @@ export default function AffiliatePage() {
       </section>
 
       {/* FAQ */}
-      <section className="px-6 pt-16 pb-16 max-w-3xl mx-auto">
+      <section id="earn-faq" className="px-6 pt-16 pb-16 max-w-3xl mx-auto">
         <h2 className="text-center text-2xl md:text-3xl font-semibold text-gray-700 mb-8">Frequently Asked Questions</h2>
         <div className="bg-white rounded-3xl shadow-[0_2px_20px_rgba(0,0,0,0.06)] p-6 md:p-8 space-y-2.5">
           {faqs.map(({ q, a }, i) => {
@@ -367,7 +367,7 @@ export default function AffiliatePage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 pb-16 max-w-4xl mx-auto">
+      <section id="earn-cta" className="px-6 pb-16 max-w-4xl mx-auto">
         <div className="bg-slate-700 rounded-xl p-8 md:p-10 grid md:grid-cols-2 gap-8 items-center">
           <div className="text-white">
             <h2 className="text-2xl md:text-3xl font-semibold">Ready to Get Started?</h2>

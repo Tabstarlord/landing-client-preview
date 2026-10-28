@@ -43,7 +43,7 @@ const navAccentColors = [
   "#4F46E5", // blue-violet
 ];
 
-const sectionDots = [
+const homeSectionDots = [
   { id: "hero", label: "Home", color: "#FBBF24" },
   { id: "solutions", label: "Solutions", color: "#F97316" },
   { id: "why", label: "Why Flyrinzo", color: "#10B981" },
@@ -51,22 +51,40 @@ const sectionDots = [
   { id: "mobile-app", label: "Mobile app", color: "#6366F1" },
 ];
 
+const progressDotsByPath: Record<string, typeof homeSectionDots> = {
+  "/": homeSectionDots,
+  "/affiliate": [
+    { id: "earn-hero", label: "Earn", color: "#FBBF24" },
+    { id: "earn-steps", label: "Steps", color: "#F97316" },
+    { id: "earn-calculator", label: "Calculator", color: "#10B981" },
+    { id: "earn-benefits", label: "Benefits", color: "#8B5CF6" },
+    { id: "earn-faq", label: "FAQs", color: "#6366F1" },
+    { id: "earn-cta", label: "Apply", color: "#4F46E5" },
+  ],
+  "/pricing": [
+    { id: "pricing-plans", label: "Plans", color: "#FBBF24" },
+    { id: "pricing-features", label: "Features", color: "#F97316" },
+    { id: "pricing-why", label: "Why Flyrinzo", color: "#10B981" },
+    { id: "pricing-cta", label: "Get Started", color: "#8B5CF6" },
+  ],
+};
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [markerX, setMarkerX] = useState(0);
   const { pricing } = usePricing();
   const cta = pricing ? `Start for ${pricing.intro.formatted}` : "Get Started";
   const pathname = usePathname().replace(/\/$/, "") || "/";
-  const isLandingPage = pathname === "/";
+  const progressDots = progressDotsByPath[pathname];
   const links = navLinks.map((link) => ({
     ...link,
     active: link.href === pathname,
   }));
 
   useEffect(() => {
-    if (!isLandingPage) return;
+    if (!progressDots) return;
 
-    const sections = sectionDots
+    const sections = progressDots
       .map(({ id }) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
 
@@ -139,7 +157,7 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [isLandingPage]);
+  }, [pathname, progressDots]);
 
   return (
     <header className="navbar-shell sticky top-0 z-50 bg-white">
@@ -238,8 +256,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Section progress rail — landing page only */}
-      {isLandingPage && (
+      {/* Section progress rail */}
+      {progressDots && (
         <div className="section-progress-rail" aria-hidden="true">
           <div className="section-progress-rail__line" aria-hidden="true" />
           <div
@@ -260,7 +278,7 @@ export default function Navbar() {
             />
           </div>
           <div className="section-progress-rail__dots">
-            {sectionDots.map((section) => {
+            {progressDots.map((section) => {
               return (
                 <span
                   key={section.id}
