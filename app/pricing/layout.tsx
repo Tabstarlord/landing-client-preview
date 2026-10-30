@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 const PAGE_URL = "https://www.flyrinzo.com/pricing/";
-const TITLE = "Pricing | Flyrinzo - Start Your First Month for $0.99";
+const TITLE = "Pricing | Flyrinzo - Simple pricing to every stage of growth.";
 const DESCRIPTION =
-  "Simple pricing to every stage of growth. Start Free and upgrade only when you see value . No long term contracts . Cancel anytime";
+  "Start Free and upgrade only when you see value . No long term contracts . Cancel anytime";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
