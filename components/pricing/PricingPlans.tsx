@@ -16,6 +16,9 @@ import {
 import { usePricing } from "./usePricing";
 
 type Billing = "monthly" | "yearly";
+type PaidPlan = "starter" | "growth" | "scale";
+
+const PAID_PLAN_IDS: readonly PaidPlan[] = ["starter", "growth", "scale"];
 
 export default function PricingPlans() {
   const [billing, setBilling] = useState<Billing>("monthly");
@@ -57,7 +60,7 @@ export default function PricingPlans() {
         
         <div className="grid items-stretch gap-4 xl:grid-cols-4">
           {PRICING_PLAN_NAMES.map((name, index) => {
-            const plan = index === 0 ? null : ["starter", "growth", "scale"][index - 1];
+            const plan: PaidPlan | null = index === 0 ? null : PAID_PLAN_IDS[index - 1] ?? null;
             const popular = index === 2;
             return (
               <article 
@@ -89,7 +92,7 @@ export default function PricingPlans() {
                 <div className="relative mt-3 flex min-h-[120px] items-center">
                   <div className="relative z-10 min-w-0 pr-20">
                     <p className="whitespace-nowrap text-3xl font-bold leading-none tracking-tight">
-                      {!plan ? `${pricing?.currencySymbol ?? ""}0` : !pricing ? "…" : billing === "monthly" ? pricing[plan.id]?.monthlyFormatted ?? "…" : pricing[plan.id]?.yearlyFormatted ?? "…"}
+                      {!plan ? `${pricing?.currencySymbol ?? ""}0` : !pricing ? "…" : billing === "monthly" ? pricing[plan]?.monthlyFormatted ?? "…" : pricing[plan]?.yearlyFormatted ?? "…"}
                       <span className="ml-2 text-sm font-normal tracking-normal text-gray-500">
                         {plan ? (billing === "monthly" ? "/month" : "/year") : "/forever"}
                       </span>
