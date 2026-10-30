@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const PAGE_URL = "https://www.flyrinzo.com/pricing/";
 const TITLE = "Pricing | Flyrinzo - Start Your First Month for $0.99";
 const DESCRIPTION =
-  "Simple pricing for every stage of growth. Start any Flyrinzo plan for $0.99 your first month, then continue at the regular monthly rate. No long-term contracts. Cancel anytime.";
+  "Simple pricing to every stage of growth. Start Free and upgrade only when you see value . No long term contracts . Cancel anytime";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },

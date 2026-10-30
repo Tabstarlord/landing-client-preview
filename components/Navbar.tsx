@@ -73,7 +73,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [markerX, setMarkerX] = useState(0);
   const { pricing } = usePricing();
-  const cta = pricing ? `Start for ${pricing.intro.formatted}` : "Get Started";
+  const cta = "Free Insights";
   const pathname = usePathname().replace(/\/$/, "") || "/";
   const progressDots = progressDotsByPath[pathname];
   const links = navLinks.map((link) => ({
@@ -123,7 +123,7 @@ export default function Navbar() {
         return;
       }
 
-      let nextIndex = sectionScrollPoints.findIndex(
+      const nextIndex = sectionScrollPoints.findIndex(
         (point, index) => index > 0 && point > scrollY,
       );
       if (nextIndex < 0 || nextIndex > lastIndex) {

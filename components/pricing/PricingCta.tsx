@@ -24,10 +24,10 @@ export default function PricingCta() {
         <div className="md:pt-[4.75cqw] [container-type:inline-size]">
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-[#FFCF4A] to-[#FFE08C] px-5 pb-[210px] pt-6 md:overflow-visible md:bg-none md:bg-[#FFC107] md:pb-0 md:pt-0 md:flex md:min-h-[11.8cqw] md:flex-col md:justify-center md:px-[2.4cqw] md:py-0">
             <h2 className="text-[22px] font-bold leading-[1.3] tracking-tight text-[#0F1A14] md:text-[2.4cqw] md:leading-tight">
-              Start your first month for just {intro}
+              Start Free, upgrade when you see value.
             </h2>
             <p className="mt-2 max-w-xl text-sm text-[#0F1A14]/50 md:max-w-[60cqw] md:text-[1.25cqw]">
-              Choose any plan. After 1 month, continue at the regular rate only if you see value. Cancel anytime.
+              Start free no credit card required. Upgrade only when you see value. Cancel anytime
             </p>
             <div className="mt-5 flex flex-col items-center gap-3 md:flex-row md:flex-wrap md:items-center md:mt-[0.6cqw] md:gap-[1.5cqw]">
               <Link

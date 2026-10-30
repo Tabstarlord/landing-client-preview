@@ -5,56 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { SocialBadge } from "./Icons";
 import { CalendarDays, ChartNoAxesColumnIncreasing, Check, Gift, Palette, UsersRound, WandSparkles } from "lucide-react";
-import { PLANS } from "./pricing-data";
+import {
+  PRICING_PLAN_ART,
+  PRICING_PLAN_CTA_LABELS,
+  PRICING_PLAN_DESCRIPTIONS,
+  PRICING_PLAN_DETAILS,
+  PRICING_PLAN_NAMES,
+  PRICING_PLAN_TAGLINES,
+} from "./pricing-data";
 import { usePricing } from "./usePricing";
 
 type Billing = "monthly" | "yearly";
 
-const details = [
-  {
-    icon: "✦", groups: [
-      ["CREATE", "10 AI-Powered Captions / month", "5 AI Marketing Visuals / month"],
-      ["PLAN & PUBLISH", "10 Scheduled Posts / month", "Instagram, Facebook & TikTok"],
-      ["ANALYZE & GROW", "Basic Performance Analytics"],
-      ["CONNECT & STORE", "Flyrinzo Business Community", "500 MB Media Storage"],
-    ],
-  },
-  {
-    icon: "✦", groups: [
-      ["CREATE", "20 AI-Powered Captions / month", "10 AI Marketing Visuals / month"],
-      ["PLAN & PUBLISH", "20 Scheduled Posts / month", "Instagram, Facebook & TikTok"],
-      ["ANALYZE & GROW", "Basic Performance Analytics"],
-      ["CONNECT & STORE", "Flyrinzo Business Community", "1 GB Media Storage"],
-    ],
-  },
-  {
-    icon: "▮", groups: [
-      ["CREATE", "Unlimited AI-Powered Captions", "30 AI Marketing Visuals / month"],
-      ["CREATIVE STUDIO", "Full Access to Creative Studio", "1000+ Templates"],
-      ["PLAN & PUBLISH", "Unlimited Scheduled Posts", "Instagram, Facebook & TikTok"],
-      ["ANALYZE & GROW", "Performance Analytics", "Smart Marketing Recommendations", "Monthly & Yearly PDF Reports"],
-      ["CONNECT & STORE", "Flyrinzo Business Community", "5 GB Media Storage"],
-    ],
-  },
-  {
-    icon: "♛", groups: [
-      ["CREATE", "Unlimited AI-Powered Captions", "100 AI Marketing Visuals / month"],
-      ["CREATIVE STUDIO", "Full Access to Creative Studio", "1000+ Templates"],
-      ["PLAN & PUBLISH", "Unlimited Scheduled Posts", "Instagram, Facebook & TikTok"],
-      ["ANALYZE & GROW", "Advanced Performance Analytics", "Smart Marketing Recommendations", "Monthly & Yearly PDF Reports", "Peer Benchmarking"],
-      ["CONNECT & STORE", "Flyrinzo Business Community", "20 GB Media Storage", "Priority Support"],
-    ],
-  },
-];
-
-const art = ["/pricing-robot.png", "/pricing-icons/rocket-art.png", "/pricing-icons/growth-art.png", "/pricing-icons/crown-art.png"];
-const names = ["Fly Free", "Fly Starter", "Fly Growth", "Fly Scale"];
-const taglines = ["Best for trying Flyrinzo", "Best for getting started", "Stay consistent. Grow smarter.", "More content. More visibility. More support."];
-
 export default function PricingPlans() {
   const [billing, setBilling] = useState<Billing>("monthly");
   const { pricing } = usePricing();
-  const paidPlans = PLANS;
 
   return (
     <>
@@ -91,8 +56,8 @@ export default function PricingPlans() {
         </header>
         
         <div className="grid items-stretch gap-4 xl:grid-cols-4">
-          {names.map((name, index) => {
-            const plan = index === 0 ? null : paidPlans[index - 1];
+          {PRICING_PLAN_NAMES.map((name, index) => {
+            const plan = index === 0 ? null : ["starter", "growth", "scale"][index - 1];
             const popular = index === 2;
             return (
               <article 
@@ -117,7 +82,7 @@ export default function PricingPlans() {
 
                   <div>
                     <h2 className="text-lg font-bold text-gray-900 leading-tight">{name}</h2>
-                    <p className="mt-1 text-xs text-gray-500 leading-5">{taglines[index]}</p>
+                    <p className="mt-1 text-xs text-gray-500 leading-5">{PRICING_PLAN_TAGLINES[index]}</p>
                   </div>
                 </div>
 
@@ -130,11 +95,11 @@ export default function PricingPlans() {
                       </span>
                     </p>
                     <p className="mt-3 max-w-[15rem] text-sm leading-5 text-slate-700">
-                      {["Try Flyrinzo and start marketing smarter.", "Simple tools to help you stay active online.", "Your everyday AI marketing toolkit for real growth.", "Maximum capacity for businesses ready to scale."][index]}
+                      {PRICING_PLAN_DESCRIPTIONS[index]}
                     </p>
                   </div>
                   <Image
-                    src={art[index]}
+                    src={PRICING_PLAN_ART[index]}
                     alt=""
                     aria-hidden="true"
                     width={120}
@@ -143,7 +108,7 @@ export default function PricingPlans() {
                   />
                 </div>
                 <div className="mt-3 flex-1 border-t border-slate-100">
-                  {details[index].groups.map((group) => 
+                  {PRICING_PLAN_DETAILS[index].groups.map((group) => 
                     <div 
                     key={group[0]} 
                     className="border-b border-slate-100 py-2.5 last:border-0"
@@ -172,7 +137,7 @@ export default function PricingPlans() {
                 href="/contact-us" 
                 className={`mt-2 block rounded-xl px-4 py-3 text-center font-semibold ${index === 0 ? "bg-slate-100 text-slate-900" : index === 1 ? "bg-purple-100 text-slate-900" : popular ? "bg-yellow-400 text-slate-950" : "bg-blue-500 text-white"}`}
                 >
-                  {["Start Free", "Choose Starter", "Get Growth", "Choose Scale"][index]}
+                  {PRICING_PLAN_CTA_LABELS[index]}
                 </Link>
               </article>
             );
