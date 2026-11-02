@@ -36,7 +36,7 @@ const sections: {
     color: "text-purple-700",
     features: [
       { label: "AI-Powered Captions", icon: FileText, values: ["10 / month", "20 / month", "Unlimited", "Unlimited"] },
-      { label: "AI Marketing Visuals", icon: ImageIcon, values: ["5 / month", "10 / month", "30 / month", "100 / month"] },
+      { label: "AI Marketing Visuals", icon: ImageIcon, values: ["3 / month", "10 / month", "30 / month", "100 / month"] },
       { label: "Creative Studio", icon: Palette, values: [false, "Basic access", "Full access", "Full access"] },
     ],
   },
