@@ -1,68 +1,144 @@
-export type PlanId = "starter" | "growth" | "scale";
+export type PlanId = "free" | "starter" | "growth" | "scale";
+
+export interface PlanSection {
+  title: string;
+  features: string[];
+}
 
 export interface Plan {
   id: PlanId;
   name: string;
   tagline: string;
+  description: string;
+  note?: string;
+  ctaLabel: string;
+  ctaHref: string;
   popular?: boolean;
-  features: string[];
+  sections: PlanSection[];
 }
 
 export const PLANS: Plan[] = [
   {
+    id: "free",
+    name: "Fly Free",
+    tagline: "Best for trying Flyrinzo",
+    description: "Try Flyrinzo and start marketing smarter.",
+    note: "No credit card required.",
+    ctaLabel: "Start Free",
+    ctaHref: "/signup",
+    sections: [
+      {
+        title: "Create",
+        features: ["10 AI-Powered Captions / month", "3 AI Marketing Visuals / month"],
+      },
+      {
+        title: "Plan & Publish",
+        features: ["10 Scheduled Posts / month", "Instagram, Facebook & TikTok"],
+      },
+      {
+        title: "Analyze & Grow",
+        features: ["Basic Performance Analytics"],
+      },
+      {
+        title: "Connect & Store",
+        features: ["Flyrinzo Business Community", "500 MB Media Storage"],
+      },
+    ],
+  },
+  {
     id: "starter",
-    name: "Starter",
-    tagline: "For businesses getting started online",
-    features: [
-      "Instagram, Facebook & TikTok",
-      "30 scheduled post per month",
-      "AI Caption (texts)",
-      "5 AI Images per month",
-      "Creative Studio (Templates) - Basic",
-      "Performance Analytics - Basic",
-      "AI Marketing Intelligence",
-      "Growth Report (Monthly & Yearly)",
-      "Flyrinzo SMB Community",
-      "500 MB Storage",
+    name: "Fly Starter",
+    tagline: "Best for getting started",
+    description: "Simple tools to help you stay active online.",
+    ctaLabel: "Choose Starter",
+    ctaHref: "/contact-us",
+    sections: [
+      {
+        title: "Create",
+        features: ["20 AI-Powered Captions / month", "10 AI Marketing Visuals / month"],
+      },
+      {
+        title: "Plan & Publish",
+        features: ["20 Scheduled Posts / month", "Instagram, Facebook & TikTok"],
+      },
+      {
+        title: "Analyze & Grow",
+        features: ["Basic Performance Analytics"],
+      },
+      {
+        title: "Connect & Store",
+        features: ["Flyrinzo Business Community", "1 GB Media Storage"],
+      },
     ],
   },
   {
     id: "growth",
-    name: "Growth",
-    tagline: "For growing business that wants consistency",
+    name: "Fly Growth",
+    tagline: "Stay consistent. Grow smarter.",
+    description: "Your everyday AI marketing toolkit for real growth.",
+    ctaLabel: "Get Growth",
+    ctaHref: "/contact-us",
     popular: true,
-    features: [
-      "Instagram, Facebook & Tiktok",
-      "100 scheduled post per month",
-      "AI Caption (texts)",
-      "30 AI Images per month",
-      "Creative Studio (Templates) - Unlimited",
-      "Performance Analytics - Advanced",
-      "AI Marketing Intelligence",
-      "Growth Report (Monthly & Yearly)",
-      "Peer Benchmarking",
-      "Flyrinzo SMB Community",
-      "5 GB Storage",
+    sections: [
+      {
+        title: "Create",
+        features: ["Unlimited AI-Powered Captions", "30 AI Marketing Visuals / month"],
+      },
+      {
+        title: "Creative Studio",
+        features: ["Full Access to Creative Studio", "1000+ Templates"],
+      },
+      {
+        title: "Plan & Publish",
+        features: ["Unlimited Scheduled Posts", "Instagram, Facebook & TikTok"],
+      },
+      {
+        title: "Analyze & Grow",
+        features: [
+          "Performance Analytics",
+          "Smart Marketing Recommendations",
+          "Monthly & Yearly PDF Reports",
+        ],
+      },
+      {
+        title: "Connect & Store",
+        features: ["Flyrinzo Business Community", "5 GB Media Storage"],
+      },
     ],
   },
   {
     id: "scale",
-    name: "Scale",
-    tagline: "For business scaling content and visibility",
-    features: [
-      "Instagram, facebook & Tiktok",
-      "300 scheduled post per month",
-      "AI Caption (texts)",
-      "100 AI Images per month",
-      "Creative Studio (Templates) - Unlimited",
-      "Performance Analytics - Advanced",
-      "AI Marketing Intelligence",
-      "Growth Report (Monthly & Yearly)",
-      "Peer Benchmarking",
-      "Priority Publisher Queue",
-      "Priority Support",
-      "Flyrinzo SMB Community",
-      "20 GB Storage",
+    name: "Fly Scale",
+    tagline: "More content. More visibility. More support.",
+    description: "Maximum capacity for businesses ready to scale.",
+    ctaLabel: "Choose Scale",
+    ctaHref: "/contact-us",
+    sections: [
+      {
+        title: "Create",
+        features: ["Unlimited AI-Powered Captions", "100 AI Marketing Visuals / month"],
+      },
+      {
+        title: "Creative Studio",
+        features: ["Full Access to Creative Studio", "1000+ Templates"],
+      },
+      {
+        title: "Plan & Publish",
+        features: ["Unlimited Scheduled Posts", "Instagram, Facebook & TikTok"],
+      },
+      {
+        title: "Analyze & Grow",
+        features: [
+          "Advanced Performance Analytics",
+          "Smart Marketing Recommendations",
+          "Monthly & Yearly PDF Reports",
+          "Peer Benchmarking",
+        ],
+      },
+      {
+        title: "Connect & Store",
+        features: ["Flyrinzo Business Community", "20 GB Media Storage", "Priority Support"],
+      },
     ],
   },
 ];
@@ -70,20 +146,20 @@ export const PLANS: Plan[] = [
 /** A cell is text, or true/false for a tick/cross, or "platforms" for the social icons. */
 export type Cell = string | boolean | "platforms";
 
-export const COMPARISON_ROWS: Array<{ label: string; values: [Cell, Cell, Cell, Cell] }> = [
-  { label: "Available Social Platforms", values: ["platforms", "platforms", "platforms", "Custom"] },
-  { label: "Scheduled Post", values: ["30 / month", "100 / month", "300 / month", "Custom"] },
-  { label: "AI Caption and text generation", values: ["30 / month", "100 / month", "300 / month", "Custom"] },
-  { label: "AI Image Generation", values: ["5 / month", "30 / month", "100 / month", "Custom"] },
-  { label: "Creative Studio (Template)", values: ["Basic", "Unlimited", "Unlimited", "Custom"] },
-  { label: "Performance Analytics", values: ["Basic Analytics", "Advanced Analytics", "Advanced Analytics", "Custom"] },
-  { label: "AI Marketing coach & Intelligence", values: [true, true, true, "Custom"] },
-  { label: "Growth Report (Monthly & Yearly)", values: [true, true, true, "Custom"] },
-  { label: "Flyrinzo SMB Community", values: [true, true, true, true] },
-  { label: "Peer Benchmarking", values: [false, true, true, "Custom"] },
-  { label: "Priority Publisher Queue", values: [false, false, true, "Custom"] },
-  { label: "Priority Support", values: [false, false, true, "Custom"] },
-  { label: "Asset Storage", values: ["500 MB", "5 GB", "20 GB", "Custom"] },
+/** Columns: Free, Starter, Growth, Scale, API. */
+export const COMPARISON_ROWS: Array<{ label: string; values: Cell[] }> = [
+  { label: "Available Social Platforms", values: ["platforms", "platforms", "platforms", "platforms", "Custom"] },
+  { label: "Scheduled Posts", values: ["10 / month", "20 / month", "Unlimited", "Unlimited", "Custom"] },
+  { label: "AI-Powered Captions", values: ["10 / month", "20 / month", "Unlimited", "Unlimited", "Custom"] },
+  { label: "AI Marketing Visuals", values: ["3 / month", "10 / month", "30 / month", "100 / month", "Custom"] },
+  { label: "Creative Studio", values: [false, false, "Full", "Full", "Custom"] },
+  { label: "Performance Analytics", values: ["Basic", "Basic", "Standard", "Advanced", "Custom"] },
+  { label: "Smart Marketing Recommendations", values: [false, false, true, true, "Custom"] },
+  { label: "Monthly & Yearly PDF Reports", values: [false, false, true, true, "Custom"] },
+  { label: "Flyrinzo Business Community", values: [true, true, true, true, true] },
+  { label: "Peer Benchmarking", values: [false, false, false, true, "Custom"] },
+  { label: "Priority Support", values: [false, false, false, true, "Custom"] },
+  { label: "Asset Storage", values: ["500 MB", "1 GB", "5 GB", "20 GB", "Custom"] },
 ];
 
 export const WITHOUT_FLYRINZO = [

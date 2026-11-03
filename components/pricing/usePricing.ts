@@ -16,7 +16,7 @@ export interface RegionalPricing {
   currency: string;
   currencySymbol: string;
   regionName: string;
-  intro: { formatted: string };
+  free: RegionalTier;
   starter: RegionalTier;
   growth: RegionalTier;
   scale: RegionalTier;
@@ -37,21 +37,31 @@ function currencyForCountry(country: string): string {
   return EURO_COUNTRIES.has(country) ? "EUR" : "USD";
 }
 
-const tier = (monthly: number, yearly: number): RegionalTier => ({
-  monthlyFormatted: `US$${monthly}`,
-  yearlyFormatted: `US$${yearly}`,
-  yearlySavingsPercentage: 17,
-});
-
-/** Shown if the API can't be reached: USD, matching what the API gives anyone it can't place. */
+/** Shown if the API can't be reached: CAD, matching the API's no-country fallback. */
 export const FALLBACK_PRICING: RegionalPricing = {
-  currency: "USD",
-  currencySymbol: "US$",
-  regionName: "USA (USD)",
-  intro: { formatted: "US$0.99" },
-  starter: tier(9, 90),
-  growth: tier(24, 240),
-  scale: tier(49, 490),
+  currency: "CAD",
+  currencySymbol: "CAD",
+  regionName: "Canada (CAD)",
+  free: {
+    monthlyFormatted: "CAD 0",
+    yearlyFormatted: "CAD 0",
+    yearlySavingsPercentage: 0,
+  },
+  starter: {
+    monthlyFormatted: "CAD 9",
+    yearlyFormatted: "CAD 90",
+    yearlySavingsPercentage: 17,
+  },
+  growth: {
+    monthlyFormatted: "CAD 29",
+    yearlyFormatted: "CAD 290",
+    yearlySavingsPercentage: 17,
+  },
+  scale: {
+    monthlyFormatted: "CAD 59",
+    yearlyFormatted: "CAD 590",
+    yearlySavingsPercentage: 17,
+  },
 };
 
 interface State {

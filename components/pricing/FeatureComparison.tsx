@@ -1,7 +1,7 @@
 import { CheckCircle, CrossCircle, SocialBadge } from "./Icons";
 import { COMPARISON_ROWS, type Cell } from "./pricing-data";
 
-const COLUMNS = ["Starter", "Growth", "Scale", "API"];
+const COLUMNS = ["Free", "Starter", "Growth", "Scale", "API"];
 
 function renderCell(cell: Cell) {
   if (cell === "platforms") {
@@ -72,7 +72,7 @@ export default function FeatureComparison() {
                     <td
                       key={COLUMNS[i]}
                       className={`border-l border-gray-200 px-3 py-4 font-medium ${
-                        i === 1 ? "bg-yellow-50" : ""
+                        COLUMNS[i] === "Growth" ? "bg-yellow-50" : ""
                       }`}
                     >
                       {renderCell(cell)}
