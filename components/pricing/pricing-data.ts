@@ -98,6 +98,7 @@ export const PLANS: Plan[] = [
           "Performance Analytics",
           "Smart Marketing Recommendations",
           "Monthly & Yearly PDF Reports",
+          "Peer Benchmarking",
         ],
       },
       {
@@ -157,7 +158,7 @@ export const COMPARISON_ROWS: Array<{ label: string; values: Cell[] }> = [
   { label: "Smart Marketing Recommendations", values: [false, false, true, true, "Custom"] },
   { label: "Monthly & Yearly PDF Reports", values: [false, false, true, true, "Custom"] },
   { label: "Flyrinzo Business Community", values: [true, true, true, true, true] },
-  { label: "Peer Benchmarking", values: [false, false, false, true, "Custom"] },
+  { label: "Peer Benchmarking", values: [false, false, true, true, "Custom"] },
   { label: "Priority Support", values: [false, false, false, true, "Custom"] },
   { label: "Asset Storage", values: ["500 MB", "1 GB", "5 GB", "20 GB", "Custom"] },
 ];
