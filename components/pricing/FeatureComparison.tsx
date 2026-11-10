@@ -1,7 +1,7 @@
 import { CheckCircle, CrossCircle, SocialBadge } from "./Icons";
 import { COMPARISON_ROWS, type Cell } from "./pricing-data";
 
-const COLUMNS = ["Free", "Starter", "Growth", "Scale", "API"];
+const COLUMNS = ["Free", "Starter", "Growth", "Scale"];
 
 function renderCell(cell: Cell) {
   if (cell === "platforms") {
