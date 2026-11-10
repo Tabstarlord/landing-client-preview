@@ -5,7 +5,6 @@ import Image from "next/image";
 import { FlyrinzoLogo } from "@/components/FlyrinzoLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { usePricing } from "@/components/pricing/usePricing";
 
 const angularButtonStyle = {
   "--angular-border": "#FACC15",
@@ -71,6 +70,7 @@ const progressDotsByPath: Record<string, typeof homeSectionDots> = {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [markerX, setMarkerX] = useState(0);
   const cta = "Start Free";
   const pathname = usePathname().replace(/\/$/, "") || "/";
   const progressDots = progressDotsByPath[pathname];
