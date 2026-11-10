@@ -79,7 +79,7 @@ export default function HeroSection() {
               <span>Login</span>
             </a>
             <a
-              href="/contact-us"
+              href="https://app.flyrinzo.com/signup"
               style={angularCtaStyle}
               className="navbar-angular-button flex h-13 w-full items-center justify-center px-10 text-base font-semibold text-white transition-colors sm:w-auto lg:px-12"
             >

@@ -51,7 +51,7 @@ export type Cell = string | boolean | "platforms";
 
 /** Columns: Free, Starter, Growth, Scale, API. */
 export const COMPARISON_ROWS: Array<{ label: string; values: Cell[] }> = [
-  { label: "Available Social Platforms", values: ["platforms", "platforms", "platforms", "platforms", "Custom"] },
+  { label: "Available Social Platforms", values: ["platforms", "platforms", "Custom", "platforms", "platforms"] },
   { label: "Scheduled Posts", values: ["10 / month", "20 / month", "Unlimited", "Unlimited", "Custom"] },
   { label: "AI-Powered Captions", values: ["10 / month", "20 / month", "Unlimited", "Unlimited", "Custom"] },
   { label: "AI Marketing Visuals", values: ["3 / month", "10 / month", "30 / month", "100 / month", "Custom"] },

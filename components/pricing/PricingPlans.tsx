@@ -137,7 +137,7 @@ export default function PricingPlans() {
                 {index === 0 && 
                 <p className="mt-1 text-center text-xs text-slate-600">No credit card required.</p>}
                 <Link 
-                href="/contact-us" 
+                href="https://app.flyrinzo.com/signup" 
                 className={`mt-2 block rounded-xl px-4 py-3 text-center font-semibold ${index === 0 ? "bg-slate-100 text-slate-900" : index === 1 ? "bg-purple-100 text-slate-900" : popular ? "bg-yellow-400 text-slate-950" : "bg-blue-500 text-white"}`}
                 >
                   {PRICING_PLAN_CTA_LABELS[index]}
