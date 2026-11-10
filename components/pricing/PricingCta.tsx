@@ -28,7 +28,7 @@ export default function PricingCta() {
             </p>
             <div className="mt-5 flex flex-col items-center gap-3 md:flex-row md:flex-wrap md:items-center md:mt-[0.6cqw] md:gap-[1.5cqw]">
               <Link
-                href="/signup"
+                href="https://app.flyrinzo.com/signup"
                 className="inline-flex items-center gap-2 rounded-lg bg-[#FFC107] px-8 py-3 text-base md:bg-[#F5B800] font-semibold text-white shadow-[0_1px_2px_rgba(0,0,0,0.06)] transition-colors hover:bg-[#EBAE00] md:gap-[0.8cqw] md:px-[1.5cqw] md:py-[0.9cqw] md:text-[1.3cqw]"
               >
                 Start Free

@@ -25,7 +25,7 @@ export const PLANS: Plan[] = [
     description: "Try Flyrinzo and start marketing smarter.",
     note: "No credit card required.",
     ctaLabel: "Start Free",
-    ctaHref: "/signup",
+    ctaHref: "https://app.flyrinzo.com/signup",
     sections: [
       {
         title: "Create",
@@ -51,7 +51,7 @@ export const PLANS: Plan[] = [
     tagline: "Best for getting started",
     description: "Simple tools to help you stay active online.",
     ctaLabel: "Choose Starter",
-    ctaHref: "/contact-us",
+    ctaHref: "https://app.flyrinzo.com/signup",
     sections: [
       {
         title: "Create",
@@ -77,7 +77,7 @@ export const PLANS: Plan[] = [
     tagline: "Stay consistent. Grow smarter.",
     description: "Your everyday AI marketing toolkit for real growth.",
     ctaLabel: "Get Growth",
-    ctaHref: "/contact-us",
+    ctaHref: "https://app.flyrinzo.com/signup",
     popular: true,
     sections: [
       {
@@ -113,7 +113,7 @@ export const PLANS: Plan[] = [
     tagline: "More content. More visibility. More support.",
     description: "Maximum capacity for businesses ready to scale.",
     ctaLabel: "Choose Scale",
-    ctaHref: "/contact-us",
+    ctaHref: "https://app.flyrinzo.com/signup",
     sections: [
       {
         title: "Create",
