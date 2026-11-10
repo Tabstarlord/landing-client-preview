@@ -215,8 +215,6 @@ export default function Navbar() {
             {/* CTA */}
             <a
               href="https://app.flyrinzo.com/login"
-              className="hidden md:inline-flex flex-shrink-0 bg-white rounded-[6px] border border-yellow-400 hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
-              href="https://app.flyrinzo.com"
               style={angularButtonStyle}
               className="navbar-angular-button hidden md:inline-flex flex-shrink-0 bg-white  hover:bg-yellow-50 text-yellow-500 font-semibold text-sm px-5 py-2.5 transition-colors"
             >
