@@ -71,9 +71,7 @@ const progressDotsByPath: Record<string, typeof homeSectionDots> = {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [markerX, setMarkerX] = useState(0);
-  const { pricing } = usePricing();
-  const cta = "Free Insights";
+  const cta = "Start Free";
   const pathname = usePathname().replace(/\/$/, "") || "/";
   const progressDots = progressDotsByPath[pathname];
   const links = navLinks.map((link) => ({
@@ -324,7 +322,7 @@ export default function Navbar() {
           <span>Login</span>
         </a>
         <Link
-          href="/contact-us"
+          href="/signup"
           onClick={() => setOpen(false)}
           style={angularCtaStyle}
           className="navbar-angular-button text-center bg-yellow-400 hover:bg-yellow-500 rounded-[6px] text-white font-semibold text-sm px-5 py-2.5 transition-colors"

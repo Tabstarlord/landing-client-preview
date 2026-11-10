@@ -49,20 +49,20 @@ export const PRICING_PLAN_CTA_LABELS = ["Start Free", "Choose Starter", "Get Gro
 /** A cell is text, or true/false for a tick/cross, or "platforms" for the social icons. */
 export type Cell = string | boolean | "platforms";
 
-export const COMPARISON_ROWS: Array<{ label: string; values: [Cell, Cell, Cell, Cell] }> = [
-  { label: "Available Social Platforms", values: ["platforms", "platforms", "platforms", "Custom"] },
-  { label: "Scheduled Post", values: ["30 / month", "100 / month", "300 / month", "Custom"] },
-  { label: "AI Caption and text generation", values: ["30 / month", "100 / month", "300 / month", "Custom"] },
-  { label: "AI Image Generation", values: ["5 / month", "30 / month", "100 / month", "Custom"] },
-  { label: "Creative Studio (Template)", values: ["Basic", "Unlimited", "Unlimited", "Custom"] },
-  { label: "Performance Analytics", values: ["Basic Analytics", "Advanced Analytics", "Advanced Analytics", "Custom"] },
-  { label: "AI Marketing coach & Intelligence", values: [true, true, true, "Custom"] },
-  { label: "Growth Report (Monthly & Yearly)", values: [true, true, true, "Custom"] },
-  { label: "Flyrinzo SMB Community", values: [true, true, true, true] },
-  { label: "Peer Benchmarking", values: [false, true, true, "Custom"] },
-  { label: "Priority Publisher Queue", values: [false, false, true, "Custom"] },
-  { label: "Priority Support", values: [false, false, true, "Custom"] },
-  { label: "Asset Storage", values: ["500 MB", "5 GB", "20 GB", "Custom"] },
+/** Columns: Free, Starter, Growth, Scale, API. */
+export const COMPARISON_ROWS: Array<{ label: string; values: Cell[] }> = [
+  { label: "Available Social Platforms", values: ["platforms", "platforms", "platforms", "platforms", "Custom"] },
+  { label: "Scheduled Posts", values: ["10 / month", "20 / month", "Unlimited", "Unlimited", "Custom"] },
+  { label: "AI-Powered Captions", values: ["10 / month", "20 / month", "Unlimited", "Unlimited", "Custom"] },
+  { label: "AI Marketing Visuals", values: ["3 / month", "10 / month", "30 / month", "100 / month", "Custom"] },
+  { label: "Creative Studio", values: [false, false, "Full", "Full", "Custom"] },
+  { label: "Performance Analytics", values: ["Basic", "Basic", "Standard", "Advanced", "Custom"] },
+  { label: "Smart Marketing Recommendations", values: [false, false, true, true, "Custom"] },
+  { label: "Monthly & Yearly PDF Reports", values: [false, false, true, true, "Custom"] },
+  { label: "Flyrinzo Business Community", values: [true, true, true, true, true] },
+  { label: "Peer Benchmarking", values: [false, false, true, true, "Custom"] },
+  { label: "Priority Support", values: [false, false, false, true, "Custom"] },
+  { label: "Asset Storage", values: ["500 MB", "1 GB", "5 GB", "20 GB", "Custom"] },
 ];
 
 export const WITHOUT_FLYRINZO = [
