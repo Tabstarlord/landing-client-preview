@@ -92,7 +92,7 @@ export default function PricingPlans() {
                 <div className="relative mt-3 flex min-h-[120px] items-center">
                   <div className="relative z-10 min-w-0 pr-20">
                     <p className="whitespace-nowrap text-3xl font-bold leading-none tracking-tight">
-                      {!plan ? `${pricing?.currencySymbol ?? ""}0` : !pricing ? "…" : billing === "monthly" ? pricing[plan]?.monthlyFormatted ?? "…" : pricing[plan]?.yearlyFormatted ?? "…"}
+                      {!plan ? `${pricing?.currencySymbol ?? ""} 0` : !pricing ? "…" : billing === "monthly" ? pricing[plan]?.monthlyFormatted ?? "…" : pricing[plan]?.yearlyFormatted ?? "…"}
                       <span className="ml-2 text-sm font-normal tracking-normal text-gray-500">
                         {plan ? (billing === "monthly" ? "/month" : "/year") : "/forever"}
                       </span>
